@@ -4,7 +4,7 @@
 # E-commerce modules
 
 Modules aiming to support e-commerce specific needs. This includes all 
-the new website_sale related modules included in version 12.0.
+the new website_sale related modules included in version 11.0.
 
 <!-- prettier-ignore-start -->
 [//]: # (addons)
