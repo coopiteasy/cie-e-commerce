@@ -1,15 +1,10 @@
 [![Build Status](https://travis-ci.com/coopiteasy/cie-e-commerce.svg?branch=12.0)](https://travis-ci.com/coopiteasy/cie-e-commerce)
 ![Licence](https://img.shields.io/badge/licence-AGPL--3-blue.svg)
 
-# IT management tools for the social economy
+# E-commerce modules
 
-We are a young IT cooperative aiming at providing IT management tools and
-services to social economy actors for a sustainable budget.
-
-How ? We provide tailored-made solutions for your business using Odoo Community,
- an open source management software. We offer operational support during and
- after the development as well as training to allow you to manage the tools
- yourself.
+Modules aiming to support e-commerce specific needs. This includes all 
+the new website_sale related modules included in version 12.0.
 
 <!-- prettier-ignore-start -->
 [//]: # (addons)
