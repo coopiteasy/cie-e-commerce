@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/coopiteasy/cie-e-commerce.svg?branch=12.0)](https://travis-ci.com/coopiteasy/cie-e-commerce)
 ![Licence](https://img.shields.io/badge/licence-AGPL--3-blue.svg)
 
 # IT management tools for the social economy
