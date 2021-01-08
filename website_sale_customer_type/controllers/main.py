@@ -16,6 +16,9 @@ class WebsiteSale(Base):
         the customer selector process.
         """
         customer_type_id = None
+        user_customer_type_id = (
+            request.env.user.partner_id.get_customer_type_id()
+        )
         if "customer_type" in request.session:
             customer_type_id = (
                 request
@@ -26,7 +29,7 @@ class WebsiteSale(Base):
         return (
             request.session["uid"]
             and customer_type_id
-            and customer_type_id == request.env.user.customer_type_id
+            and customer_type_id == user_customer_type_id
         ) or (
             not request.session["uid"]
             and customer_type_id
@@ -120,10 +123,11 @@ class WebsiteSale(Base):
             .browse(int(request.session["customer_type"]))
         )
         # Check state that needs to show errors to the user
+        partner = request.env.user.partner_id
         if (
             customer_type_id.website_require_early_login
             or request.session["uid"]
-        ) and request.env.user.customer_type_id != customer_type_id:
+        ) and partner.get_customer_type_id() != customer_type_id:
             request.session.logout(keep_db=True)
             request.session["customer_type_selector_error"] = _(
                 "Mismatch between the customer type selected and the "
@@ -164,9 +168,8 @@ class WebsiteSale(Base):
         products = response.qcontext["products"]
 
         # Get current user list of products (product.product)
-        partner = request.env.user.commercial_partner_id
-        if partner.website_restrict_product:
-            allowed_products = partner.website_product_ids
+        if request.env.user.website_restrict_product:
+            allowed_products = request.env.user.website_product_ids
         else:
             allowed_products = None
 
@@ -194,7 +197,7 @@ class WebsiteSale(Base):
         # Add element to context
         response.qcontext["products"] = products
         response.qcontext["restrict_product"] = (
-            partner.website_restrict_product
+            request.env.user.website_restrict_product
         )
         response.qcontext["allowed_products"] = allowed_products
         response.qcontext["product_count"] = product_count
@@ -208,9 +211,8 @@ class WebsiteSale(Base):
         response = super().product(product, category, search, **kwargs)
 
         # Get product list allowed for the current user (product.product)
-        partner = request.env.user.commercial_partner_id
-        if partner.website_restrict_product:
-            allowed_products = partner.website_product_ids
+        if request.env.user.website_restrict_product:
+            allowed_products = request.env.user.website_product_ids
         else:
             allowed_products = None
 

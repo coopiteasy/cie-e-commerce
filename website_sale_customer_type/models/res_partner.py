@@ -26,6 +26,17 @@ class ResPartner(models.Model):
         compute="_compute_website_product_ids",
     )
 
+    def get_customer_type_id(self):
+        """
+        Return customer_type of the current partner and if empty
+        check the customer_type of the commercial_partner_id.
+        """
+        self.ensure_one()
+        return (
+            self.customer_type_id
+            or self.commercial_partner_id.customer_type_id
+        )
+
     @api.depends("customer_type_id")
     def _compute_website_restrict_product(self):
         """
@@ -34,8 +45,8 @@ class ResPartner(models.Model):
         """
         for partner in self:
             partner.website_restrict_product = (
-                partner.customer_type_id
-                and partner.customer_type_id.website_restrict_product
+                partner.get_customer_type_id()
+                and partner.get_customer_type_id().website_restrict_product
             )
 
     @api.depends("customer_type_id")
@@ -47,8 +58,8 @@ class ResPartner(models.Model):
         for partner in self:
             products = self.env["product.product"]
             if (
-                partner.customer_type_id
-                and partner.customer_type_id.website_product_ids
+                partner.get_customer_type_id()
+                and partner.get_customer_type_id().website_product_ids
             ):
-                products |= partner.customer_type_id.website_product_ids
+                products |= partner.get_customer_type_id().website_product_ids
             partner.website_product_ids = products
