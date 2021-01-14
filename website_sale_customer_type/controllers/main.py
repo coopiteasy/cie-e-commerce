@@ -153,7 +153,6 @@ class WebsiteSale(Base):
                 ppg = int(ppg)
             except ValueError:
                 ppg = PPG
-            post["ppg"] = ppg
         else:
             ppg = PPG
 
@@ -162,7 +161,7 @@ class WebsiteSale(Base):
             page=0,
             category=category,
             search=search,
-            ppg=0,
+            ppg='10000',
             **post
         )
         products = response.qcontext["products"]
