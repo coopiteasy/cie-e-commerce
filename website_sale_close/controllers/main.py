@@ -23,13 +23,17 @@ class WebsiteSaleCloseController(website_sale):
     @http.route()
     def shop(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).shop(*args, **kwargs)
+            return super(WebsiteSaleCloseController, self).shop(
+                *args, **kwargs
+            )
         return self.closed_ecommerce()
 
     @http.route()
     def product(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).product(*args, **kwargs)
+            return super(WebsiteSaleCloseController, self).product(
+                *args, **kwargs
+            )
         return self.closed_ecommerce()
 
     @http.route()
@@ -43,7 +47,9 @@ class WebsiteSaleCloseController(website_sale):
     @http.route()
     def cart(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).cart(*args, **kwargs)
+            return super(WebsiteSaleCloseController, self).cart(
+                *args, **kwargs
+            )
         return self.closed_ecommerce()
 
     @http.route()
@@ -81,7 +87,9 @@ class WebsiteSaleCloseController(website_sale):
     @http.route()
     def payment(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).payment(*args, **kwargs)
+            return super(WebsiteSaleCloseController, self).payment(
+                *args, **kwargs
+            )
         return self.closed_ecommerce()
 
     @http.route()
