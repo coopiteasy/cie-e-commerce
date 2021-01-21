@@ -1,16 +1,15 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Coop IT Easy SCRLfs
 #   - Rémy Taymans <remy@coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import http
-from openerp.addons.website_sale.controllers.main import website_sale
-from openerp.http import request
+from odoo import http
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.http import request
 
 
-class WebsiteSaleCloseController(website_sale):
+class WebsiteSaleCloseController(WebsiteSale):
     """
-    Overwrite routes from website_sale controller to close the
+    Overwrite routes from WebsiteSale controller to close the
     e-commerce when required by configuration.
     """
 

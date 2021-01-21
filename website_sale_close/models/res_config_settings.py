@@ -4,18 +4,22 @@
 from odoo import fields, models
 
 
-class Website(models.Model):
+class ResConfigSettings(models.TransientModel):
 
-    _inherit = "website"
+    _inherit = "res.config.settings"
 
     is_ecommerce_open = fields.Boolean(
         string="Is e-commerce open",
         default=True,
         help="When checked, e-commerce is open. When unchecked, "
         "e-commerce is closed.",
+        related="website_id.is_ecommerce_open",
+        readonly=False,
     )
     text_closed_ecommerce = fields.Html(
         string="Text closed e-commerce",
         default="E-commerce is momently closed.",
         translate=True,
+        related="website_id.text_closed_ecommerce",
+        readonly=False,
     )
