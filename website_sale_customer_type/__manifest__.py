@@ -10,10 +10,13 @@
     'author': 'Coop IT Easy SCRLfs <https://coopiteasy.be>',
     'website': 'https://github.com/coopiteasy/cie-e-commerce',
     'depends': [
+        "auth_signup",
         "contacts",
         "website_sale",
     ],
     'data': [
+        "views/auth_signup_login_templates.xml",
+        "views/portal_templates.xml",
         "views/product_product.xml",
         "views/res_partner.xml",
         "views/res_partner_customer_type.xml",
