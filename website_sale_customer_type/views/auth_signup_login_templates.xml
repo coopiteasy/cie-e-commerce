@@ -4,20 +4,22 @@
 <odoo>
     <template id="customer_type_fields" inherit_id="auth_signup.fields">
         <xpath expr="//div[hasclass('field-login')]" position="before">
-            <div class="form-group field-customer-type">
-                <label for="customer_type" class="control-label">Your Customer Type</label>
-                <input type="text"
-                       id="customer_type"
-                       name="customer_type"
-                       class="form-control"
-                       t-att-value="customer_type.name if customer_type else None"
-                       autocapitalize="off"
-                       required="required"
-                       readonly="'readonly'"/>
-            </div>
+            <t t-if="is_signup">
+                <div class="form-group field-customer-type">
+                    <label for="customer_type" class="control-label">Your Customer Type</label>
+                    <input type="text"
+                           id="customer_type"
+                           name="customer_type"
+                           class="form-control"
+                           t-att-value="customer_type.name if customer_type else None"
+                           autocapitalize="off"
+                           required="required"
+                           readonly="'readonly'"/>
+                </div>
+            </t>
         </xpath>
         <xpath expr="//div[hasclass('field-password')]" position="before">
-            <t t-if="customer_type and customer_type.website_signup_vat_required">
+            <t t-if="is_signup and customer_type and customer_type.website_signup_vat_required">
                 <div class="form-group field-vat">
                     <label for="vat" class="control-label">TIN / VAT </label>
                     <input type="text"
