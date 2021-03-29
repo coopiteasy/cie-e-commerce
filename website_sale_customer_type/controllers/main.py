@@ -55,12 +55,24 @@ class AuthSignupHome(AuthSignupHome):
         required_fields = ["login", "name", "password"]
         if qcontext["is_signup"]:
             required_fields.append("customer_type")
+            required_fields.append("customer_type_id")
         values = dict((key, qcontext.get(key)) for key in required_fields)
         if not all([key for key in values.values()]):
             raise UserError(_("The form was not properly filled in."))
 
         if qcontext["is_signup"]:
-            customer_type_id = request.env["res.partner.customer.type"].sudo().search([("name", "=", values.get("customer_type"))])
+            try:
+                customer_type_id_int = int(values.get("customer_type_id"))
+            except (ValueError, TypeError) as err:
+                raise UserError(err)
+            customer_type_id = (
+                request.env["res.partner.customer.type"]
+                .sudo()
+                .browse(customer_type_id_int)
+                .exists()
+            )
+            if not customer_type_id:
+                raise UserError(_("This Customer Type does not exists."))
             if customer_type_id.website_restrict_signup:
                 raise UserError("%s" % customer_type_id.website_restrict_signup_text)
             if customer_type_id.website_signup_vat_required:

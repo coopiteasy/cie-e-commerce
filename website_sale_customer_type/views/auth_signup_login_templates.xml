@@ -14,7 +14,12 @@
                            t-att-value="customer_type.name if customer_type else None"
                            autocapitalize="off"
                            required="required"
-                           readonly="'readonly'"/>
+                           readonly="readonly"/>
+                    <input type="hidden"
+                           id="customer_type_id"
+                           name="customer_type_id"
+                           t-att-value="customer_type.id if customer_type else 0"
+                           readonly="readonly"/>
                 </div>
             </t>
         </xpath>
