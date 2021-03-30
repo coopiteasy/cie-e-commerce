@@ -34,15 +34,16 @@ class AuthSignupHome(AuthSignupHome):
         This function is called in web_auth_signup()
         """
         qcontext = super(AuthSignupHome, self).get_auth_signup_qcontext()
-        if qcontext.get('customer_type'):
-            return qcontext
-        res_partner_customer_type = False
-        if 'customer_type' in request.session:
-            customer_type_id = request.session['customer_type']
-            res_partner_customer_type = request.env["res.partner.customer.type"].sudo().browse(customer_type_id)
-        qcontext.update({
-            'customer_type': res_partner_customer_type
-        })
+        qcontext["is_signup"] = (
+            "/web/signup" == request.httprequest.path
+        )
+        if "customer_type" not in qcontext:
+            qcontext["customer_type"] = (
+                request.env["res.partner.customer.type"]
+                .sudo()
+                .browse(request.session.get("customer_type"))
+                .exists()
+            )
         return qcontext
 
     def do_signup(self, qcontext):
@@ -50,16 +51,35 @@ class AuthSignupHome(AuthSignupHome):
         Taken from odoo/addons/auth_signup/controllers/main.py and adapted for cet_website_sale.
         Attention: breaks the inheritance mechanism.
         """
-        values = dict((key, qcontext.get(key)) for key in ('login', 'name', 'password', 'customer_type'))
+        # Determine required fields
+        required_fields = ["login", "name", "password"]
+        if qcontext["is_signup"]:
+            required_fields.append("customer_type")
+            required_fields.append("customer_type_id")
+        values = dict((key, qcontext.get(key)) for key in required_fields)
         if not all([key for key in values.values()]):
             raise UserError(_("The form was not properly filled in."))
-        customer_type_id = request.env["res.partner.customer.type"].sudo().search([("name", "=", values.get("customer_type"))])
-        if customer_type_id.website_restrict_signup:
-            raise UserError("%s" % customer_type_id.website_restrict_signup_text)
-        if customer_type_id.website_signup_vat_required:
-            if not qcontext.get('vat'):
-                raise UserError("%s" % customer_type_id.website_signup_vat_required_text)
-            values['vat'] = qcontext.get('vat')
+
+        if qcontext["is_signup"]:
+            try:
+                customer_type_id_int = int(values.get("customer_type_id"))
+            except (ValueError, TypeError) as err:
+                raise UserError(err)
+            customer_type_id = (
+                request.env["res.partner.customer.type"]
+                .sudo()
+                .browse(customer_type_id_int)
+                .exists()
+            )
+            if not customer_type_id:
+                raise UserError(_("This Customer Type does not exists."))
+            if customer_type_id.website_restrict_signup:
+                raise UserError("%s" % customer_type_id.website_restrict_signup_text)
+            if customer_type_id.website_signup_vat_required:
+                if not qcontext.get('vat'):
+                    raise UserError("%s" % customer_type_id.website_signup_vat_required_text)
+                values['vat'] = qcontext.get('vat')
+
         if values.get('password') != qcontext.get('confirm_password'):
             raise UserError(_("Passwords do not match; please retype them."))
         supported_langs = [lang['code'] for lang in request.env['res.lang'].sudo().search_read([], ['code'])]
