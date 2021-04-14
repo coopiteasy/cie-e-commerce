@@ -16,6 +16,7 @@
     ],
     'data': [
         "views/auth_signup_login_templates.xml",
+        "views/payment_views.xml",
         "views/portal_templates.xml",
         "views/product_product.xml",
         "views/res_partner.xml",

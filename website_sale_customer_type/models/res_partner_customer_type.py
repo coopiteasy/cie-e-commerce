@@ -64,6 +64,17 @@ class ResPartnerCustomerType(models.Model):
         default="A TIN/VAT number is required for this customer type",
         translate=True
     )
+    website_restrict_acquirer = fields.Boolean(
+        string="Restrict Acquirer on E-commerce"
+    )
+    website_acquirer_ids = fields.Many2many(
+        string="Acquirers",
+        comodel_name="payment.acquirer",
+        columns2="customer_type_ids",
+        domain=[('website_published', '=', True)],
+        help="Acquirers enabled for this Customer Type"
+    )
+
 
     def show_on_website_button(self):
         """Toggle function used for the button in the form"""
