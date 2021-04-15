@@ -5,7 +5,7 @@
     'name': 'Website Sale Customer Type',
     'description': """
         Let customer choose his type when accessing the e-commerce""",
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.1.0',
     'license': 'AGPL-3',
     'author': 'Coop IT Easy SCRLfs <https://coopiteasy.be>',
     'website': 'https://github.com/coopiteasy/cie-e-commerce',
