@@ -27,6 +27,8 @@ A Customer Type brings functionality to :
 
 - Restrict products that a customer can view on the e-commerce to a list
   of allowed products.
+- Restrict acquirers that a customer can use on the e-commerce to a list
+  of allowed acquirers.
 - Force the customer to login before accessing to the e-commerce.
 - Redirect the customer to a specific location after the selection of
   its type (see Customer Type Selector Popover).
@@ -79,6 +81,20 @@ Customer Type*.
 
 To enable the Customer Selector on the e-commerce, it must exists at
 least one Customer Type with the *Show On Website* property set to True.
+
+
+Acquirer Restriction
+~~~~~~~~~~~~~~~~~~~~
+
+On the Customer Type, the `website_restrict_acquirer` field should
+be set to `True` **and** the field `website_acquirer_ids` should be
+filled with some acquirers. When the `website_restrict_acquirer` is set,
+the only acquirer that this user will see will be the one in the
+`website_acquirer_ids` list. If this list is empty, the user will see all
+activated/published acquirers.
+
+To assign acquirer to a Customer Type, it can also be done by adding the
+Customer Type directly on the Payment Acquirer form under the *Configuration* tab.
 
 Usage
 =====
