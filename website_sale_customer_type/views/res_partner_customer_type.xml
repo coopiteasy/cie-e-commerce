@@ -75,14 +75,6 @@
                                 <field name="next_url"/>
                             </group>
                         </page>
-                        <page string="Payment Acquirer">
-                            <group name="acquirer_config">
-                                <field name="website_restrict_acquirer"/>
-                                <field name="website_acquirer_ids"
-                                       attrs="{'invisible': [('website_restrict_acquirer', '=', False)]}"
-                                       widget="many2many_tags"/>
-                            </group>
-                        </page>
                     </notebook>
                 </sheet>
             </form>

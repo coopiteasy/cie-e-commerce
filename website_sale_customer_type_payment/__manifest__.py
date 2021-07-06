@@ -2,27 +2,21 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': 'Website Sale Customer Type',
+    'name': 'Website Sale Customer Type Payment',
     'summary': """
-        Let customer choose his type when accessing the e-commerce""",
+        Restrict acquirers that a Customer Type can use on the e-commerce.""",
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Coop IT Easy SCRLfs <https://coopiteasy.be>',
     'website': 'https://github.com/coopiteasy/cie-e-commerce',
     'depends': [
-        "auth_signup",
-        "contacts",
-        "website_sale",
+        "website_sale_customer_type",
     ],
     'data': [
-        "views/auth_signup_login_templates.xml",
-        "views/portal_templates.xml",
-        "views/product_product.xml",
-        "views/res_partner.xml",
+        "views/payment_views.xml",
         "views/res_partner_customer_type.xml",
-        "views/website_sale_templates.xml",
-        "security/ir.model.access.csv",
     ],
     'demo': [
     ],
+    'installable': False,  # not tested
 }

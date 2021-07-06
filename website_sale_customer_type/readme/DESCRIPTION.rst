@@ -6,8 +6,6 @@ A Customer Type brings functionality to :
 
 - Restrict products that a customer can view on the e-commerce to a list
   of allowed products.
-- Restrict acquirers that a customer can use on the e-commerce to a list
-  of allowed acquirers.
 - Force the customer to login before accessing to the e-commerce.
 - Redirect the customer to a specific location after the selection of
   its type (see Customer Type Selector Popover).
