@@ -14,7 +14,7 @@ Website Sale Customer Type
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-coopiteasy%2Fcie--e--commerce-lightgray.png?logo=github
-    :target: https://github.com/coopiteasy/cie-e-commerce/tree/11.0/website_sale_customer_type
+    :target: https://github.com/coopiteasy/cie-e-commerce/tree/12.0/website_sale_customer_type
     :alt: coopiteasy/cie-e-commerce
 
 |badge1| |badge2| |badge3| 
@@ -27,8 +27,6 @@ A Customer Type brings functionality to :
 
 - Restrict products that a customer can view on the e-commerce to a list
   of allowed products.
-- Restrict acquirers that a customer can use on the e-commerce to a list
-  of allowed acquirers.
 - Force the customer to login before accessing to the e-commerce.
 - Redirect the customer to a specific location after the selection of
   its type (see Customer Type Selector Popover).
@@ -82,20 +80,6 @@ Customer Type*.
 To enable the Customer Selector on the e-commerce, it must exists at
 least one Customer Type with the *Show On Website* property set to True.
 
-
-Acquirer Restriction
-~~~~~~~~~~~~~~~~~~~~
-
-On the Customer Type, the `website_restrict_acquirer` field should
-be set to `True` **and** the field `website_acquirer_ids` should be
-filled with some acquirers. When the `website_restrict_acquirer` is set,
-the only acquirer that this user will see will be the one in the
-`website_acquirer_ids` list. If this list is empty, the user will see all
-activated/published acquirers.
-
-To assign acquirer to a Customer Type, it can also be done by adding the
-Customer Type directly on the Payment Acquirer form under the *Configuration* tab.
-
 Usage
 =====
 
@@ -108,13 +92,18 @@ on the e-commerce page.
 If you have configured products on the customer type, you will see only
 these when logged in with a proper account.
 
+Known issues / Roadmap
+======================
+
+* Remove from cart restricted products for a customer type
+
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues <https://github.com/coopiteasy/cie-e-commerce/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/coopiteasy/cie-e-commerce/issues/new?body=module:%20website_sale_customer_type%0Aversion:%2011.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/coopiteasy/cie-e-commerce/issues/new?body=module:%20website_sale_customer_type%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -130,10 +119,11 @@ Contributors
 ~~~~~~~~~~~~
 
 * Rémy Taymans <remy@coopiteasy.be>
+* Vincent Van Rossem <vincent@coopiteasy.be>
 
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `coopiteasy/cie-e-commerce <https://github.com/coopiteasy/cie-e-commerce/tree/11.0/website_sale_customer_type>`_ project on GitHub.
+This module is part of the `coopiteasy/cie-e-commerce <https://github.com/coopiteasy/cie-e-commerce/tree/12.0/website_sale_customer_type>`_ project on GitHub.
 
 You are welcome to contribute.

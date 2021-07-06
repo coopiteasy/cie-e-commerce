@@ -53,7 +53,7 @@
                 </p>
             </t>
         </xpath>
-        <xpath expr="//button[hasclass('o_signup_btn')]" position="attributes">
+        <xpath expr="//button[@type='submit']" position="attributes">
             <t t-if="customer_type and customer_type.website_restrict_signup">
                 <attribute name="t-att-disabled">'disabled' if (customer_type and customer_type.website_restrict_signup) else None</attribute>
             </t>
