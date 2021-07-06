@@ -31,44 +31,6 @@
                                     attrs="{'invisible': [('website_restrict_product', '=', False)]}"/>
                             </group>
                         </page>
-                        <page string="Signup">
-                            <div class="row mt16 o_settings_container" id="website_signup">
-                            <div class="col-xs-12 col-md-12 o_setting_box">
-                                <div class="o_setting_left_pane">
-                                    <field name="website_restrict_signup"/>
-                                </div>
-                                <div class="o_setting_right_pane" id="website_restrict_signup">
-                                    <label for="website_restrict_signup"/>
-                                    <div class="text-muted">
-                                        Add a custom message explaining why signup is restricted
-                                    </div>
-                                    <div class="content-group mt16" attrs="{'invisible' : [('website_restrict_signup', '=', False)]}">
-                                        <div>
-                                            <label string="Signup message" for="website_restrict_signup_text" class="col-md-2 o_light_label"/>
-                                            <field name="website_restrict_signup_text"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12 o_setting_box" id="website_signup_vat_required">
-                                <div class="o_setting_left_pane">
-                                    <field name="website_signup_vat_required"/>
-                                </div>
-                                <div class="o_setting_right_pane">
-                                    <label for="website_signup_vat_required"/>
-                                    <div class="text-muted">
-                                        Add a custom message accompanying the TIN/VAT number requirement
-                                    </div>
-                                    <div class="content-group mt16" attrs="{'invisible' : [('website_signup_vat_required', '=', False)]}">
-                                        <div>
-                                            <label string="VAT message" for="website_signup_vat_required_text" class="col-md-2 o_light_label"/>
-                                            <field name="website_signup_vat_required_text"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </page>
                         <page string="Website">
                             <group name="website_config">
                                 <field name="website_require_early_login"/>

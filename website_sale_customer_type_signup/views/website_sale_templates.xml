@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018-2020 Coop IT Easy SCRLfs
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- TODO: fix view -->
+    <!--
+    <template id="customer_type_address" inherit_id="website_sale.address">
+        <xpath expr="//input[@name='vat']" position="attributes">
+            <t t-if="customer_type and customer_type.website_signup_vat_required">
+                <attribute name="t-att-required">'required' if (customer_type and customer_type.website_signup_vat_required) else None</attribute>
+            </t>
+        </xpath>
+        <xpath expr="//form[@name='/shop/address']//t[@t-if=&quot;mode == (&apos;new&apos;, &apos;billing&apos;)&quot;]" position="after">
+            <t t-if="mode == ('edit', 'billing')">
+                <t t-if="customer_type and customer_type.website_signup_vat_required">
+                    <div t-attf-class="form-group #{error.get('company_name') and 'has-error' or ''} col-md-6">
+                        <label class="control-label font-weight-normal label-optional" for="company_name">Company Name</label>
+                        <input type="text"
+                               name="company_name"
+                               class="form-control"
+                               t-att-value="'company_name' in checkout and checkout['company_name']" />
+                    </div>
+                    <div t-attf-class="form-group #{error.get('vat') and 'has-error' or ''} col-md-6 div_vat">
+                        <label class="control-label" for="vat">TIN / VAT </label>
+                        <input type="text"
+                               name="vat"
+                               class="form-control"
+                               t-att-value="'vat' in checkout and checkout['vat']"
+                               t-att-required="'required' if (customer_type and customer_type.website_signup_vat_required) else None" />
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </template>
+    -->
+
+</odoo>

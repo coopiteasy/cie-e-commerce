@@ -46,24 +46,6 @@ class ResPartnerCustomerType(models.Model):
             "that belongs to this customer type."
         )
     )
-    website_restrict_signup = fields.Boolean(
-        string="Restrict Signup on E-commerce",
-        help="Specify whether the customer type is allowed to create an account on e-commerce",
-    )
-    website_restrict_signup_text = fields.Char(
-        string="Custom text for signup restriction",
-        default="Signup is restricted for this customer type",
-        translate=True
-    )
-    website_signup_vat_required = fields.Boolean(
-        string="Require TIN/VAT number for signup",
-        help="Specify whether the customer type must specify the TIN/VAT number on signup",
-    )
-    website_signup_vat_required_text = fields.Char(
-        string="Custom text for VAT number requirement",
-        default="A TIN/VAT number is required for this customer type",
-        translate=True
-    )
 
     def show_on_website_button(self):
         """Toggle function used for the button in the form"""
