@@ -66,12 +66,10 @@ class WebsiteSale(Base):
         allowed_products list.
         product_tmpl must be a product.template.
         """
-        # TODO: Validate this when product_variant is not activate !
-        for variant in product_tmpl.product_variant_ids:
-            if allowed_products is not None and variant in allowed_products:
-                return True
-            elif allowed_products is None:
-                return True
+        if allowed_products is not None and product_tmpl in allowed_products:
+            return True
+        if allowed_products is None:
+            return True
         return False
 
     @http.route(
@@ -217,9 +215,8 @@ class WebsiteSale(Base):
 
         # Filter alternative_product_ids
         if allowed_products is not None:
-            allowed_product_tmpls = allowed_products.mapped("product_tmpl_id")
             alt_product_ids = product.alternative_product_ids.filtered(
-                lambda p: p in allowed_product_tmpls
+                lambda p: p in allowed_products
             )
         else:
             alt_product_ids = product.alternative_product_ids

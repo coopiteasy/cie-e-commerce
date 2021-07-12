@@ -14,7 +14,7 @@
         "website_sale",
     ],
     'data': [
-        "views/product_product.xml",
+        "views/product.xml",
         "views/res_partner.xml",
         "views/res_partner_customer_type.xml",
         "views/website_sale_templates.xml",

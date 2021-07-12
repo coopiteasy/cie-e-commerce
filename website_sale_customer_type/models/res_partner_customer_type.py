@@ -1,4 +1,4 @@
-# Copyright 2020 Coop IT Easy SCRLfs <http://coopiteasy.be>
+# Copyright 2021 Coop IT Easy SCRLfs <http://coopiteasy.be>
 #   Rémy Taymans <remy@coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -39,7 +39,7 @@ class ResPartnerCustomerType(models.Model):
     )
     website_product_ids = fields.Many2many(
         string="Product",
-        comodel_name="product.product",
+        comodel_name="product.template",
         columns2="customer_type_ids",
         help=(
             "Choose product that can be viewed on e-commerce by users "

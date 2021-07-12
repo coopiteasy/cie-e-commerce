@@ -1,4 +1,4 @@
-# Copyright 2020 Coop IT Easy SCRLfs <http://coopiteasy.be>
+# Copyright 2021 Coop IT Easy SCRLfs <http://coopiteasy.be>
 #   Rémy Taymans <remy@coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -21,7 +21,7 @@ class ResPartner(models.Model):
         compute="_compute_website_restrict_product"
     )
     website_product_ids = fields.Many2many(
-        comodel_name="product.product",
+        comodel_name="product.template",
         string="Product",
         compute="_compute_website_product_ids",
     )
@@ -56,7 +56,7 @@ class ResPartner(models.Model):
         the partner if connected depending on its customer type.
         """
         for partner in self:
-            products = self.env["product.product"]
+            products = self.env["product.template"]
             if (
                 partner.get_customer_type_id()
                 and partner.get_customer_type_id().website_product_ids
