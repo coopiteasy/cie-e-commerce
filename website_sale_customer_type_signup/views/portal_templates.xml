@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 Coop IT Easy SCRLfs
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="customer_type_my_details" inherit_id="portal.portal_my_details">
+        <xpath expr="//input[@name='vat']" position="attributes">
+            <t t-if="partner.customer_type_id and partner.customer_type_id.website_signup_vat_required">
+                <attribute name="t-att-required">'required' if (partner.customer_type_id and partner.customer_type_id.website_signup_vat_required) else None</attribute>
+            </t>
+        </xpath>
+    </template>
+</odoo>

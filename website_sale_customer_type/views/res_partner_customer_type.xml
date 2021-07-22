@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Coop IT Easy SCRLfs
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_partner_customer_type_form" model="ir.ui.view">
+        <field name="name">res.partner.customer.type.form</field>
+        <field name="model">res.partner.customer.type</field>
+        <field name="arch" type="xml">
+            <form string="Customer Type">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="show_on_website_button" type="object"
+                                class="oe_stat_button" icon="fa-globe">
+                            <field name="show_on_website" widget="website_button"/>
+                        </button>
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                    <h1><field name="name" default_focus="1" placeholder="Name"/></h1>
+                    </div>
+                    <notebook>
+                        <page string="Product">
+                            <group name="website_product">
+                                <field name="website_restrict_product"/>
+                                <field name="website_product_ids"
+                                    attrs="{'invisible': [('website_restrict_product', '=', False)]}"/>
+                            </group>
+                        </page>
+                        <page string="Website">
+                            <group name="website_config">
+                                <field name="website_require_early_login"/>
+                                <field name="next_url"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_partner_customer_type_list" model="ir.ui.view">
+        <field name="name">res.partner.customer.type.list</field>
+        <field name="model">res.partner.customer.type</field>
+        <field name="arch" type="xml">
+            <tree string="Customer Type">
+                <field name="display_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_partner_customer_type_filter" model="ir.ui.view">
+        <field name="name">res.partner.customer.type.filter</field>
+        <field name="model">res.partner.customer.type</field>
+        <field name="arch" type="xml">
+            <search string="Search Customer Type">
+                <field name="name"/>
+                <separator/>
+                <filter string="Website Restrict Products" name="website_restrict_product" domain="[('website_restrict_product','=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_partner_customer_type" model="ir.actions.act_window">
+        <field name="name">Customer Type Action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner.customer.type</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new customer type.
+            </p>
+            <p>
+                Manage customer types to distinguish customer in the e-commerce.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_partner_customer_type"
+        action="website_sale_customer_type.action_partner_customer_type"
+        name="Customer Type"
+        parent="contacts.res_partner_menu_config"/>
+
+</odoo>
