@@ -34,6 +34,15 @@ class ResPartner(models.Model):
         string="Acquirer",
         compute="_compute_website_acquirer_ids",
     )
+    website_restrict_public_categ = fields.Boolean(
+        string="Restrict Product Category on E-commerce",
+        compute="_compute_website_restrict_public_categ"
+    )
+    website_public_categ_ids = fields.Many2many(
+        comodel_name="product.public.category",
+        string="Product Category",
+        compute="_compute_website_public_categ_ids",
+    )
 
     def get_customer_type_id(self):
         """
@@ -99,3 +108,31 @@ class ResPartner(models.Model):
             ):
                 acquirers |= partner.get_customer_type_id().website_acquirer_ids
             partner.website_acquirer_ids = acquirers
+
+    @api.depends("customer_type_id")
+    def _compute_website_restrict_public_categ(self):
+        """
+        Set website_restrict_public_categ to True if the customer type
+        has the flag website_restrict_public_categ set.
+        """
+        for partner in self:
+            partner.website_restrict_public_categ = (
+                partner.get_customer_type_id()
+                and partner.get_customer_type_id().website_restrict_public_categ
+            )
+
+    @api.depends("customer_type_id")
+    def _compute_website_public_categ_ids(self):
+        """
+        Return the list of display stand that can be seen on the e-commerce by
+        the partner if connected depending on its customer type.
+        """
+        for partner in self:
+            public_categs = self.env["product.public.category"]
+            if (
+                partner.get_customer_type_id()
+                and partner.get_customer_type_id().website_public_categ_ids
+            ):
+                public_categs |= partner.get_customer_type_id().website_public_categ_ids
+            partner.website_public_categ_ids = public_categs
+

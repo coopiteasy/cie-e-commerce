@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_public_category_form_view" model="ir.ui.view">
+        <field name="name">product.public.category.website.sale.customer.type.form</field>
+        <field name="model">product.public.category</field>
+        <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']/../.." position="after">
+                <group name="is_display_stand">
+                    <field name="is_display_stand"/>
+                </group>
+                <group name="website_restriction" string="Website Restriction">
+                    <field name="customer_type_ids"
+                           widget="many2many_tags"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

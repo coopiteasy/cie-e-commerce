@@ -3,3 +3,4 @@ from . import res_partner
 from . import res_users
 from . import product_product
 from . import payment_acquirer
+from . import product_public_category

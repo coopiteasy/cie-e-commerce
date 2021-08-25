@@ -6,6 +6,8 @@ A Customer Type brings functionality to :
 
 - Restrict products that a customer can view on the e-commerce to a list
   of allowed products.
+- Restrict eCommerce Categories that a customer can view on the e-commerce
+  to a list of allowed categories.
 - Restrict acquirers that a customer can use on the e-commerce to a list
   of allowed acquirers.
 - Force the customer to login before accessing to the e-commerce.

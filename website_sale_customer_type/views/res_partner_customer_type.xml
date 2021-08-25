@@ -83,6 +83,13 @@
                                        widget="many2many_tags"/>
                             </group>
                         </page>
+                        <page string="eCommerce Category" name="public_categ">
+                            <group name="website_public_categ">
+                                <field name="website_restrict_public_categ"/>
+                                <field name="website_public_categ_ids"
+                                    attrs="{'invisible': [('website_restrict_public_categ', '=', False)]}"/>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

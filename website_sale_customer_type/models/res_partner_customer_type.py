@@ -75,6 +75,19 @@ class ResPartnerCustomerType(models.Model):
         help="Acquirers enabled for this Customer Type"
     )
 
+    website_restrict_public_categ = fields.Boolean(
+        string="Restrict Product Category on E-commerce"
+    )
+    website_public_categ_ids = fields.Many2many(
+        string="eCommerce Category",
+        comodel_name="product.public.category",
+        columns2="customer_type_ids",
+        help=(
+            "Choose product category that can be viewed on e-commerce by users "
+            "that belongs to this customer type."
+        )
+    )
+
 
     def show_on_website_button(self):
         """Toggle function used for the button in the form"""

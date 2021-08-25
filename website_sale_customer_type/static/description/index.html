@@ -374,6 +374,8 @@ Type and assign it to partner.</p>
 <ul class="simple">
 <li>Restrict products that a customer can view on the e-commerce to a list
 of allowed products.</li>
+<li>Restrict eCommerce Categories that a customer can view on the e-commerce
+to a list of allowed categories.</li>
 <li>Restrict acquirers that a customer can use on the e-commerce to a list
 of allowed acquirers.</li>
 <li>Force the customer to login before accessing to the e-commerce.</li>
@@ -388,16 +390,17 @@ page at the first visit of a new customer (if configured).</p>
 <ul class="simple">
 <li><a class="reference internal" href="#configuration" id="id1">Configuration</a><ul>
 <li><a class="reference internal" href="#product-restriction" id="id2">Product Restriction</a></li>
-<li><a class="reference internal" href="#customer-type-selector" id="id3">Customer Type Selector</a></li>
-<li><a class="reference internal" href="#acquirer-restriction" id="id4">Acquirer Restriction</a></li>
+<li><a class="reference internal" href="#ecommerce-categories-restriction" id="id3">eCommerce Categories Restriction</a></li>
+<li><a class="reference internal" href="#customer-type-selector" id="id4">Customer Type Selector</a></li>
+<li><a class="reference internal" href="#acquirer-restriction" id="id5">Acquirer Restriction</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#usage" id="id5">Usage</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="id6">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="id7">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="id8">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="id9">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="id10">Maintainers</a></li>
+<li><a class="reference internal" href="#usage" id="id6">Usage</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="id7">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="id8">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="id9">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="id10">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="id11">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -422,8 +425,26 @@ Restriction</em> topic.</p>
 <p>!Waring! The product are filtered on the e-commerce <strong>only</strong> if the
 customer is logged in !</p>
 </div>
+<div class="section" id="ecommerce-categories-restriction">
+<h2><a class="toc-backref" href="#id3">eCommerce Categories Restriction</a></h2>
+<p>To restrict eCommerce Categories that a user can see on the e-commerce,
+a Customer Type should be assigned to the partner associated with the
+User used by the customer. If this partner is a contact of a company,
+the Customer Type should be assigned to the company.</p>
+<p>Then on the Customer Type, the <cite>website_restrict_public_categ</cite> field
+should be set to <cite>True</cite> <strong>and</strong> the field <cite>website_public_categ_ids</cite>
+should be filled with some categories.
+When the <cite>website_restrict_public_categ</cite> is set, the only category that
+this user will see will be the one in the <cite>website_public_categ_ids</cite> list.
+If this list is empty, the user will see no category on the e-commerce.</p>
+<p>To assign category to a Customer Type, it can also be done by adding the
+Customer Type directly on the eCommerce Categories form under the
+<em>Website Restriction</em> topic.</p>
+<p>!Warning! The categories are filtered on the e-commerce <strong>only</strong> if the
+customer is logged in !</p>
+</div>
 <div class="section" id="customer-type-selector">
-<h2><a class="toc-backref" href="#id3">Customer Type Selector</a></h2>
+<h2><a class="toc-backref" href="#id4">Customer Type Selector</a></h2>
 <p>By default, this module don’t show a Customer Selector on the
 e-commerce. The goal of the Customer Selector is to let the user choose
 his type of customer a be guided to the right procedure to connect.</p>
@@ -433,7 +454,7 @@ Customer Type</em>.</p>
 least one Customer Type with the <em>Show On Website</em> property set to True.</p>
 </div>
 <div class="section" id="acquirer-restriction">
-<h2><a class="toc-backref" href="#id4">Acquirer Restriction</a></h2>
+<h2><a class="toc-backref" href="#id5">Acquirer Restriction</a></h2>
 <p>On the Customer Type, the <cite>website_restrict_acquirer</cite> field should
 be set to <cite>True</cite> <strong>and</strong> the field <cite>website_acquirer_ids</cite> should be
 filled with some acquirers. When the <cite>website_restrict_acquirer</cite> is set,
@@ -445,16 +466,16 @@ Customer Type directly on the Payment Acquirer form under the <em>Configuration<
 </div>
 </div>
 <div class="section" id="usage">
-<h1><a class="toc-backref" href="#id5">Usage</a></h1>
+<h1><a class="toc-backref" href="#id6">Usage</a></h1>
 <p>Configure as show in the configure section. To use it assign a Customer
 Type to your partners.</p>
 <p>If you have published Customer Type, you will see Customer Type Selector
 on the e-commerce page.</p>
-<p>If you have configured products on the customer type, you will see only
-these when logged in with a proper account.</p>
+<p>If you have configured products and/or categories on the customer type,
+you will see only these when logged in with a proper account.</p>
 </div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#id6">Bug Tracker</a></h1>
+<h1><a class="toc-backref" href="#id7">Bug Tracker</a></h1>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/coopiteasy/cie-e-commerce/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
@@ -462,21 +483,22 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#id7">Credits</a></h1>
+<h1><a class="toc-backref" href="#id8">Credits</a></h1>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#id8">Authors</a></h2>
+<h2><a class="toc-backref" href="#id9">Authors</a></h2>
 <ul class="simple">
 <li>Coop IT Easy SCRLfs &lt;<a class="reference external" href="https://coopiteasy.be">https://coopiteasy.be</a>&gt;</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h2><a class="toc-backref" href="#id9">Contributors</a></h2>
+<h2><a class="toc-backref" href="#id10">Contributors</a></h2>
 <ul class="simple">
 <li>Rémy Taymans &lt;<a class="reference external" href="mailto:remy&#64;coopiteasy.be">remy&#64;coopiteasy.be</a>&gt;</li>
+<li>Vincent Van Rossem &lt;<a class="reference external" href="mailto:vincent&#64;coopiteasy.be">vincent&#64;coopiteasy.be</a>&gt;</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#id10">Maintainers</a></h2>
+<h2><a class="toc-backref" href="#id11">Maintainers</a></h2>
 <p>This module is part of the <a class="reference external" href="https://github.com/coopiteasy/cie-e-commerce/tree/11.0/website_sale_customer_type">coopiteasy/cie-e-commerce</a> project on GitHub.</p>
 <p>You are welcome to contribute.</p>
 </div>

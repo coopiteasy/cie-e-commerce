@@ -4,5 +4,5 @@ Type to your partners.
 If you have published Customer Type, you will see Customer Type Selector
 on the e-commerce page.
 
-If you have configured products on the customer type, you will see only
-these when logged in with a proper account.
+If you have configured products and/or categories on the customer type,
+you will see only these when logged in with a proper account.

@@ -155,6 +155,18 @@ class WebsiteSale(Base):
                 return True
         return False
 
+    def _is_categ_allowed(self, categ, allowed_categs):
+        """
+        Return True if the categ is allowed based on the
+        allowed_categs list.
+        categ must be a product.public.category.
+        """
+        if allowed_categs is not None and categ in allowed_categs:
+            return True
+        elif allowed_categs is None:
+            return True
+        return False
+
     @http.route(
         ['/set/customer_type'], type='http', auth="public", website=True
     )
@@ -246,6 +258,8 @@ class WebsiteSale(Base):
             **post
         )
         products = response.qcontext["products"]
+        categs = response.qcontext["categories"]
+        is_display_stand = post.get("is_display_stand", False)
 
         # Get current user list of products (product.product)
         if request.env.user.website_restrict_product:
@@ -253,9 +267,20 @@ class WebsiteSale(Base):
         else:
             allowed_products = None
 
+        # Get current user list of categories (product.public.category)
+        if request.env.user.website_restrict_public_categ:
+            allowed_categs = request.env.user.website_public_categ_ids
+        else:
+            allowed_categs = None
+
         # Filter products
         products = products.filtered(
             lambda p: self._is_product_allowed(p, allowed_products)
+        )
+
+        # Filter categories
+        categs = categs.filtered(
+            lambda c: self._is_categ_allowed(c, allowed_categs)
         )
 
         # Construct pager
@@ -276,10 +301,16 @@ class WebsiteSale(Base):
 
         # Add element to context
         response.qcontext["products"] = products
+        response.qcontext["categories"] = categs
         response.qcontext["restrict_product"] = (
             request.env.user.website_restrict_product
         )
+        response.qcontext["restrict_public_categ"] = (
+            request.env.user.website_restrict_public_categ
+        )
         response.qcontext["allowed_products"] = allowed_products
+        response.qcontext["allowed_categs"] = allowed_categs
+        response.qcontext["is_display_stand"] = is_display_stand
         response.qcontext["product_count"] = product_count
         response.qcontext["pager"] = pager
         response.qcontext["bins"] = TableCompute().process(products, ppg)

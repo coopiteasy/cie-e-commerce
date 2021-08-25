@@ -27,6 +27,8 @@ A Customer Type brings functionality to :
 
 - Restrict products that a customer can view on the e-commerce to a list
   of allowed products.
+- Restrict eCommerce Categories that a customer can view on the e-commerce
+  to a list of allowed categories.
 - Restrict acquirers that a customer can use on the e-commerce to a list
   of allowed acquirers.
 - Force the customer to login before accessing to the e-commerce.
@@ -68,6 +70,28 @@ Restriction* topic.
 !Waring! The product are filtered on the e-commerce **only** if the
 customer is logged in !
 
+eCommerce Categories Restriction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To restrict eCommerce Categories that a user can see on the e-commerce,
+a Customer Type should be assigned to the partner associated with the
+User used by the customer. If this partner is a contact of a company,
+the Customer Type should be assigned to the company.
+
+Then on the Customer Type, the `website_restrict_public_categ` field
+should be set to `True` **and** the field `website_public_categ_ids`
+should be filled with some categories.
+When the `website_restrict_public_categ` is set, the only category that
+this user will see will be the one in the `website_public_categ_ids` list.
+If this list is empty, the user will see no category on the e-commerce.
+
+To assign category to a Customer Type, it can also be done by adding the
+Customer Type directly on the eCommerce Categories form under the
+*Website Restriction* topic.
+
+!Warning! The categories are filtered on the e-commerce **only** if the
+customer is logged in !
+
 
 Customer Type Selector
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -105,8 +129,8 @@ Type to your partners.
 If you have published Customer Type, you will see Customer Type Selector
 on the e-commerce page.
 
-If you have configured products on the customer type, you will see only
-these when logged in with a proper account.
+If you have configured products and/or categories on the customer type,
+you will see only these when logged in with a proper account.
 
 Bug Tracker
 ===========
@@ -130,6 +154,7 @@ Contributors
 ~~~~~~~~~~~~
 
 * Rémy Taymans <remy@coopiteasy.be>
+* Vincent Van Rossem <vincent@coopiteasy.be>
 
 Maintainers
 ~~~~~~~~~~~

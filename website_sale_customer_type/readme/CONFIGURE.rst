@@ -20,6 +20,28 @@ Restriction* topic.
 !Waring! The product are filtered on the e-commerce **only** if the
 customer is logged in !
 
+eCommerce Categories Restriction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To restrict eCommerce Categories that a user can see on the e-commerce,
+a Customer Type should be assigned to the partner associated with the
+User used by the customer. If this partner is a contact of a company,
+the Customer Type should be assigned to the company.
+
+Then on the Customer Type, the `website_restrict_public_categ` field
+should be set to `True` **and** the field `website_public_categ_ids`
+should be filled with some categories.
+When the `website_restrict_public_categ` is set, the only category that
+this user will see will be the one in the `website_public_categ_ids` list.
+If this list is empty, the user will see no category on the e-commerce.
+
+To assign category to a Customer Type, it can also be done by adding the
+Customer Type directly on the eCommerce Categories form under the
+*Website Restriction* topic.
+
+!Warning! The categories are filtered on the e-commerce **only** if the
+customer is logged in !
+
 
 Customer Type Selector
 ~~~~~~~~~~~~~~~~~~~~~~
