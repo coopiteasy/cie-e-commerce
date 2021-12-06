@@ -304,6 +304,10 @@ class WebsiteSale(Base):
             )
         else:
             alt_product_ids = product.alternative_product_ids
+        response.qcontext["allowed_products"] = allowed_products
+        response.qcontext["restrict_product"] = (
+            request.env.user.website_restrict_product
+        )
         response.qcontext["alt_product_ids"] = alt_product_ids
         return response
 
