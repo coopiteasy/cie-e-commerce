@@ -8,6 +8,17 @@ from odoo.addons.website_sale.controllers.main import (
 )
 
 
+def _is_closed_response(response):
+    """Check whether the response is of a closed webshop.
+
+    Compatibility check if website_sale_close is also installed.
+    """
+    return (
+        response.qcontext.get("response_template")
+        == "website_sale_close.closed_ecommerce"
+    )
+
+
 class WebsiteSale(Base):
 
     def _user_can_shop(self):
@@ -160,8 +171,12 @@ class WebsiteSale(Base):
             category=category,
             search=search,
             ppg='10000',
-            **post
+            **post,
         )
+        # Don't proceed if eCommerce is closed.
+        if _is_closed_response(response):
+            return response
+
         products = response.qcontext["products"]
 
         # Get current user list of products (product.product)
@@ -206,6 +221,9 @@ class WebsiteSale(Base):
     @http.route()
     def product(self, product, category="", search="", **kwargs):
         response = super().product(product, category, search, **kwargs)
+        # Don't proceed if eCommerce is closed.
+        if _is_closed_response(response):
+            return response
 
         # Get product list allowed for the current user (product.product)
         if request.env.user.website_restrict_product:
