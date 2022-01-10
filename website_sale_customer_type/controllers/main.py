@@ -11,7 +11,14 @@ from odoo.addons.website_sale.controllers.main import (
 def _is_closed_response(response):
     """Check whether the response is of a closed webshop.
 
-    Compatibility check if website_sale_close is also installed.
+    This implicitly depends on the module website_sale_close. If that module is not
+    installed, this function should always return False. If that module _is_
+    installed, then it sometimes returns an 'empty' response template that might
+    cause attribute errors in code that expects certain values to be there.
+
+    We don't want to explicitly depend on website_sale_close, and there's no way to
+    make sure that website_sale_close's code is run _last_, so this is a somewhat
+    decent workaround solution.
     """
     return (
         response.qcontext.get("response_template")
