@@ -8,6 +8,24 @@ from odoo.addons.website_sale.controllers.main import (
 )
 
 
+def _is_closed_response(response):
+    """Check whether the response is of a closed webshop.
+
+    This implicitly depends on the module website_sale_close. If that module is not
+    installed, this function should always return False. If that module _is_
+    installed, then it sometimes returns an 'empty' response template that might
+    cause attribute errors in code that expects certain values to be there.
+
+    We don't want to explicitly depend on website_sale_close, and there's no way to
+    make sure that website_sale_close's code is run _last_, so this is a somewhat
+    decent workaround solution.
+    """
+    return (
+        response.qcontext.get("response_template")
+        == "website_sale_close.closed_ecommerce"
+    )
+
+
 class WebsiteSale(Base):
 
     def _user_can_shop(self):
@@ -160,8 +178,12 @@ class WebsiteSale(Base):
             category=category,
             search=search,
             ppg='10000',
-            **post
+            **post,
         )
+        # Don't proceed if eCommerce is closed.
+        if _is_closed_response(response):
+            return response
+
         products = response.qcontext["products"]
 
         # Get current user list of products (product.product)
@@ -206,6 +228,9 @@ class WebsiteSale(Base):
     @http.route()
     def product(self, product, category="", search="", **kwargs):
         response = super().product(product, category, search, **kwargs)
+        # Don't proceed if eCommerce is closed.
+        if _is_closed_response(response):
+            return response
 
         # Get product list allowed for the current user (product.product)
         if request.env.user.website_restrict_product:
