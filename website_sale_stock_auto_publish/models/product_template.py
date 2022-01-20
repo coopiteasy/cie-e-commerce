@@ -5,7 +5,8 @@ from odoo import models
 
 
 class ProductTemplate(models.Model):
-    _inherit = 'product.template'
+    _name = "product.template"
+    _inherit = ["product.template", "website.published.mixin"]
 
     def auto_publishing_value(self):
         self.ensure_one()
