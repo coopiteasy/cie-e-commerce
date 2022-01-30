@@ -13,6 +13,17 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[website_sale_add_to_cart_popup](website_sale_add_to_cart_popup/) | 12.0.1.0.0 | Always show the add to cart popup in the e-commerce.
+[website_sale_close](website_sale_close/) | 12.0.1.0.0 | Website Sale Close
+[website_sale_customer_type](website_sale_customer_type/) | 12.0.1.0.0 | Let customer choose his type when accessing the e-commerce
+
+
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[website_sale_customer_type_payment](website_sale_customer_type_payment/) | 12.0.1.0.0 (unported) | Restrict acquirers that a Customer Type can use on the e-commerce.
+[website_sale_customer_type_signup](website_sale_customer_type_signup/) | 12.0.1.0.0 (unported) | Restrict Customer Type Signup on E-commerce
 
 [//]: # (end addons)
 <!-- prettier-ignore-end -->
