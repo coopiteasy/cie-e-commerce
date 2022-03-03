@@ -4,9 +4,12 @@
 {
     "name": "Website Sale Add To Cart Popup",
     "summary": "Always show the add to cart popup in the e-commerce.",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "author": "Coop IT Easy SCRLfs",
     "website": "https://coopiteasy.be",
-    "depends": ["website_sale"],
+    "depends": [
+        "sale_product_configurator",
+        "website_sale",  # Recommends
+    ],
 }
