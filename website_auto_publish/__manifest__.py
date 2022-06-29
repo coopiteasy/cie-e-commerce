@@ -1,4 +1,4 @@
-# Copyright 2021 Coop IT Easy SCRLfs <http://coopiteasy.be>
+# Copyright 2021 Coop IT Easy SC <http://coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
@@ -7,7 +7,7 @@
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     "category": "Website",
-    'author': 'Coop IT Easy SCRLfs <https://coopiteasy.be>',
+    'author': 'Coop IT Easy SC <https://coopiteasy.be>',
     'website': 'https://github.com/coopiteasy/cie-e-commerce',
     'depends': [
         "website",
