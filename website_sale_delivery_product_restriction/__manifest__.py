@@ -4,7 +4,8 @@
 {
     "name": "Website Sale Delivery Product Restriction",
     "summary": """
-        Allow some product to be shipped only by some delivery carrier and also on eCommerce.""",
+        Allow some product to be shipped only by some delivery carrier and also
+        on eCommerce.""",
     "version": "12.0.1.0.0",
     "category": "Website",
     "website": "https://coopiteasy.be",

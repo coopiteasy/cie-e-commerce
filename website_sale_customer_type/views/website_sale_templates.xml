@@ -1,34 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2018-2020 Coop IT Easy SC
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
 
     <template id="recommended_products" inherit_id="website_sale.recommended_products">
-        <xpath expr="//t[@t-foreach='product.alternative_product_ids']" position="attributes">
+        <xpath
+            expr="//t[@t-foreach='product.alternative_product_ids']"
+            position="attributes"
+        >
             <attribute name="t-foreach">alt_product_ids</attribute>
         </xpath>
     </template>
 
     <!-- Customer Type Selector -->
     <template id="customer_type_selector_popover" name="Customer Type Selector Popover">
-        <div id="customer_type_selector" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div
+            id="customer_type_selector"
+            class="modal"
+            tabindex="-1"
+            role="dialog"
+            data-backdrop="static"
+            data-keyboard="false"
+        >
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
                         <h1 class="text-center">Which type of customer are you?</h1>
-                        <p class="alert alert-warning" t-if="customer_type_selector_error">
+                        <p
+                            class="alert alert-warning"
+                            t-if="customer_type_selector_error"
+                        >
                             <strong>Warning!</strong>
-                            <t t-esc="customer_type_selector_error"/>
+                            <t t-esc="customer_type_selector_error" />
                         </p>
                         <div class="text-center">
                             <t t-foreach="customer_type_ids" t-as="customer_type_id">
-                                <a t-attf-href="/set/customer_type?customer_type={{ customer_type_id.id }}&amp;origin_url={{ request.httprequest.url }}" class="btn btn-lg btn-primary ml8 mr8">
-                                    <t t-esc="customer_type_id.name"/>
+                                <a
+                                    t-attf-href="/set/customer_type?customer_type={{ customer_type_id.id }}&amp;origin_url={{ request.httprequest.url }}"
+                                    class="btn btn-lg btn-primary ml8 mr8"
+                                >
+                                    <t t-esc="customer_type_id.name" />
                                 </a>
                             </t>
                         </div>
                         <div class="mt16">
-                            <t t-call="website_sale_customer_type.customer_type_selector_popover_bottom"/>
+                            <t
+                                t-call="website_sale_customer_type.customer_type_selector_popover_bottom"
+                            />
                         </div>
                     </div>
                 </div>
@@ -36,14 +54,21 @@
         </div>
     </template>
 
-    <template id="customer_type_selector_popover_bottom" name="Customer Type Selector Popover Bottom">
+    <template
+        id="customer_type_selector_popover_bottom"
+        name="Customer Type Selector Popover Bottom"
+    >
         <!-- Edit this template to add content at the bottom of the customer selector -->
     </template>
 
-    <template id="customer_type_selector_layout" inherit_id="website.layout" name="Customer Type Selector in Layout">
+    <template
+        id="customer_type_selector_layout"
+        inherit_id="website.layout"
+        name="Customer Type Selector in Layout"
+    >
         <xpath expr="//main" position="inside">
             <t t-if="show_customer_type_selector">
-                <t t-call="website_sale_customer_type.customer_type_selector_popover"/>
+                <t t-call="website_sale_customer_type.customer_type_selector_popover" />
                 <script name="show_customer_type_selector_script">
                     $(document).ready(function(){
                     $("#customer_type_selector").modal('show');

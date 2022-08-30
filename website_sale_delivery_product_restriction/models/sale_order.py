@@ -9,6 +9,4 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def _get_delivery_methods(self):
-        return self.available_carrier_ids.filtered(
-            lambda c: c.website_published
-        )
+        return self.available_carrier_ids.filtered(lambda c: c.website_published)

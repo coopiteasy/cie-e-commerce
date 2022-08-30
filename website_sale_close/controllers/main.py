@@ -3,8 +3,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import http
-from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.http import request
+
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class WebsiteSaleCloseController(WebsiteSale):
@@ -22,49 +23,37 @@ class WebsiteSaleCloseController(WebsiteSale):
     @http.route()
     def shop(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).shop(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).shop(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
     def product(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).product(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).product(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
     def pricelist(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).pricelist(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).pricelist(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
     def cart(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).cart(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).cart(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
     def cart_update(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).cart_update(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).cart_update(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
     def checkout(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).checkout(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).checkout(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
@@ -78,17 +67,13 @@ class WebsiteSaleCloseController(WebsiteSale):
     @http.route()
     def extra_info(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).extra_info(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).extra_info(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
     def payment(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).payment(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).payment(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()
@@ -102,9 +87,9 @@ class WebsiteSaleCloseController(WebsiteSale):
     @http.route()
     def payment_confirmation(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(
-                WebsiteSaleCloseController, self
-            ).payment_confirmation(*args, **kwargs)
+            return super(WebsiteSaleCloseController, self).payment_confirmation(
+                *args, **kwargs
+            )
         return self.closed_ecommerce()
 
     @http.route()
@@ -118,9 +103,7 @@ class WebsiteSaleCloseController(WebsiteSale):
     @http.route()
     def add_product(self, *args, **kwargs):
         if request.website.is_ecommerce_open:
-            return super(WebsiteSaleCloseController, self).add_product(
-                *args, **kwargs
-            )
+            return super(WebsiteSaleCloseController, self).add_product(*args, **kwargs)
         return self.closed_ecommerce()
 
     @http.route()

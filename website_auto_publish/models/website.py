@@ -6,7 +6,7 @@ from odoo.exceptions import UserError
 
 
 class WebsitePublishedMixin(models.AbstractModel):
-    _inherit = 'website.published.mixin'
+    _inherit = "website.published.mixin"
 
     auto_managed_publishing = fields.Boolean(
         string="Managed Publishing",
@@ -34,14 +34,18 @@ class WebsitePublishedMixin(models.AbstractModel):
     @api.multi
     def website_auto_publish(self):
         for record in self:
-            if record.auto_managed_publishing and \
-               record.auto_publishing_value() != record.website_published:
+            if (
+                record.auto_managed_publishing
+                and record.auto_publishing_value() != record.website_published
+            ):
                 record.website_published = not record.website_published
 
     @api.multi
     def website_publish_button(self):
         self.ensure_one()
-        if not self.auto_managed_publishing or (self.website_url != '#' and
-           self.env.user.has_group('website.group_website_publisher')):
+        if not self.auto_managed_publishing or (
+            self.website_url != "#"
+            and self.env.user.has_group("website.group_website_publisher")
+        ):
             return super(WebsitePublishedMixin, self).website_publish_button()
         raise UserError(_("Automatic (un)publishing is enabled."))
