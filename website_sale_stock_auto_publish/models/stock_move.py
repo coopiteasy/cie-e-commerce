@@ -5,7 +5,7 @@ from odoo import api, models
 
 
 class StockMove(models.Model):
-    _inherit = 'stock.move'
+    _inherit = "stock.move"
 
     @api.model
     def create(self, values):
@@ -16,5 +16,5 @@ class StockMove(models.Model):
     @api.multi
     def write(self, values):
         res = super(StockMove, self).write(values)
-        self.mapped('product_tmpl_id').website_auto_publish()
+        self.mapped("product_tmpl_id").website_auto_publish()
         return res
