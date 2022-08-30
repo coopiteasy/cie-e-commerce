@@ -17,7 +17,25 @@ Modules aiming to support e-commerce-specific needs. This includes all the new w
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[website_auto_publish](website_auto_publish/) | 12.0.1.0.0 |  | Base module for automatic (un)publishing
+[website_sale_add_to_cart_popup](website_sale_add_to_cart_popup/) | 12.0.1.0.0 |  | Always show the add to cart popup in the e-commerce.
+[website_sale_close](website_sale_close/) | 12.0.1.0.0 |  | Allow to close the website for a moment and reopen it when needed.
+[website_sale_customer_type](website_sale_customer_type/) | 12.0.1.0.0 |  | Let customer choose his type when accessing the e-commerce
+[website_sale_delivery_product_restriction](website_sale_delivery_product_restriction/) | 12.0.1.0.0 |  | Allow some product to be shipped only by some delivery carrier and also on eCommerce.
+[website_sale_product_sort_recent_arrival](website_sale_product_sort_recent_arrival/) | 12.0.1.0.0 |  | Let sort product on e-commerce by most recent arrival date.
+[website_sale_stock_auto_publish](website_sale_stock_auto_publish/) | 12.0.1.0.0 |  | Allows the automatic (un)publishing of products according to the stock level
+
+
+Unported addons
+---------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[website_sale_customer_type_payment](website_sale_customer_type_payment/) | 12.0.1.0.0 (unported) |  | Restrict acquirers that a Customer Type can use on the e-commerce.
+[website_sale_customer_type_signup](website_sale_customer_type_signup/) | 12.0.1.0.0 (unported) |  | Restrict Customer Type Signup on E-commerce
 
 [//]: # (end addons)
 
