@@ -4,7 +4,7 @@
 
 {
     "name": "Website Sale Close",
-    "description": """
+    "summary": """
         Allow to close the website for a moment and reopen it when needed.""",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",

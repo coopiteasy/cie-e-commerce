@@ -7,7 +7,7 @@
         Let customer choose his type when accessing the e-commerce""",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Coop IT Easy SC <https://coopiteasy.be>",
+    "author": "Coop IT Easy SC",
     "website": "https://coopiteasy.be",
     "depends": [
         "contacts",
