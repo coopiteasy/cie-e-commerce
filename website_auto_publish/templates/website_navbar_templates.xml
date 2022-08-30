@@ -1,14 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="user_navbar" inherit_id="website.user_navbar">
         <xpath expr="//label[@for='id']" position="attributes">
-            <attribute name="t-attf-class">o_switch o_switch_danger #{'bg-transparent' if main_object.auto_managed_publishing else 'js_publish_btn'}</attribute>
+            <attribute
+                name="t-attf-class"
+            >o_switch o_switch_danger #{'bg-transparent' if main_object.auto_managed_publishing else 'js_publish_btn'}</attribute>
         </xpath>
         <xpath expr="//input[@id='id']" position="replace">
-	           <input t-if="main_object.auto_managed_publishing"
-	               type="checkbox" t-att-checked="main_object.website_published" id="id" disabled="disabled"/>
-               <input t-else=""
-                   type="checkbox" t-att-checked="main_object.website_published" id="id"/>
+	           <input
+                t-if="main_object.auto_managed_publishing"
+                type="checkbox"
+                t-att-checked="main_object.website_published"
+                id="id"
+                disabled="disabled"
+            />
+               <input
+                t-else=""
+                type="checkbox"
+                t-att-checked="main_object.website_published"
+                id="id"
+            />
         </xpath>
 	</template>
 </odoo>
