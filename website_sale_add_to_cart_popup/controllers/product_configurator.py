@@ -29,17 +29,13 @@ class ProductConfiguratorController(ProductConfiguratorController):
         add_qty = int(kw.get("add_qty", 1))
         to_currency = (pricelist or product).currency_id
         company = (
-            request.env["res.company"].browse(
-                request.env.context.get("company_id")
-            )
+            request.env["res.company"].browse(request.env.context.get("company_id"))
             or request.env["res.users"]._get_company()
         )
         date = request.env.context.get("date") or fields.Date.today()
 
         def compute_currency(price):
-            return product.currency_id._convert(
-                price, to_currency, company, date
-            )
+            return product.currency_id._convert(price, to_currency, company, date)
 
         no_variant_attribute_values = combination.filtered(
             lambda rec: rec.attribute_id.create_variant == "no_variant"
