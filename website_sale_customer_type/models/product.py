@@ -12,7 +12,6 @@ class ProductProduct(models.Model):
         comodel_name="res.partner.customer.type",
         columns2="website_product_ids",
         help=(
-            "This product appears in restriction list of the following "
-            "customer type"
-        )
+            "This product appears in restriction list of the following " "customer type"
+        ),
     )

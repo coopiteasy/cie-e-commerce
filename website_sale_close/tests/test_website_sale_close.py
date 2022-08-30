@@ -5,7 +5,6 @@ from odoo.tests.common import HttpCase
 
 
 class WebsiteSaleCloseCase(HttpCase):
-
     def test_01_check_e_commerce_open(self):
         website = self.env["website"].browse(1)
         website.is_ecommerce_open = True

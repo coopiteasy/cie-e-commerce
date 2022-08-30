@@ -3,8 +3,11 @@
 
 from odoo import _, http
 from odoo.http import request
+
 from odoo.addons.website_sale.controllers.main import (
-    PPG, TableCompute, WebsiteSale as Base
+    PPG,
+    TableCompute,
+    WebsiteSale as Base,
 )
 
 
@@ -27,20 +30,16 @@ def _is_closed_response(response):
 
 
 class WebsiteSale(Base):
-
     def _user_can_shop(self):
         """
         Return True if the user can shop or False if it needs to follow
         the customer selector process.
         """
         customer_type_id = None
-        user_customer_type_id = (
-            request.env.user.partner_id.get_customer_type_id()
-        )
+        user_customer_type_id = request.env.user.partner_id.get_customer_type_id()
         if "customer_type" in request.session:
             customer_type_id = (
-                request
-                .env["res.partner.customer.type"]
+                request.env["res.partner.customer.type"]
                 .sudo()
                 .browse(int(request.session["customer_type"]))
             )
@@ -61,12 +60,9 @@ class WebsiteSale(Base):
         """
         vals = {}
         customer_type_ids = (
-            request
-            .env["res.partner.customer.type"]
+            request.env["res.partner.customer.type"]
             .sudo()
-            .search(
-                [("show_on_website", "=", True)]
-            )
+            .search([("show_on_website", "=", True)])
         )
         vals["show_customer_type_selector"] = (
             customer_type_ids and not self._user_can_shop()
@@ -90,9 +86,7 @@ class WebsiteSale(Base):
             return True
         return False
 
-    @http.route(
-        ['/set/customer_type'], type='http', auth="public", website=True
-    )
+    @http.route(["/set/customer_type"], type="http", auth="public", website=True)
     def set_customer_type(self, customer_type=None, origin_url=None, **post):
         """
         Set the customer_type in the request.session and redirect to
@@ -103,27 +97,22 @@ class WebsiteSale(Base):
             del request.session["customer_type_selector_error"]
 
         customer_type_id = (
-            request
-            .env["res.partner.customer.type"]
-            .sudo()
-            .browse(int(customer_type))
+            request.env["res.partner.customer.type"].sudo().browse(int(customer_type))
         )
 
         # Set customer_type in session
         request.session["customer_type"] = customer_type_id.id
 
         # Redirect
-        next_url = (
-            "/check/customer_type?next_url=%s&origin_url=%s"
-            % (customer_type_id.next_url or origin_url, origin_url)
+        next_url = "/check/customer_type?next_url=%s&origin_url=%s" % (
+            customer_type_id.next_url or origin_url,
+            origin_url,
         )
         if customer_type_id.website_require_early_login:
             return request.redirect("/web/login?redirect=%s" % next_url)
         return request.redirect(next_url)
 
-    @http.route(
-        ['/check/customer_type'], type='http', auth="public", website=True
-    )
+    @http.route(["/check/customer_type"], type="http", auth="public", website=True)
     def check_customer_type(self, origin_url=None, next_url=None, **post):
         """
         Check if the customer type choice is correct regarding to the
@@ -133,16 +122,14 @@ class WebsiteSale(Base):
         if "customer_type" not in request.session:
             return request.redirect(origin_url)
         customer_type_id = (
-            request
-            .env["res.partner.customer.type"]
+            request.env["res.partner.customer.type"]
             .sudo()
             .browse(int(request.session["customer_type"]))
         )
         # Check state that needs to show errors to the user
         partner = request.env.user.partner_id
         if (
-            customer_type_id.website_require_early_login
-            or request.session["uid"]
+            customer_type_id.website_require_early_login or request.session["uid"]
         ) and partner.get_customer_type_id() != customer_type_id:
             request.session.logout(keep_db=True)
             request.session["customer_type_selector_error"] = _(
@@ -177,7 +164,7 @@ class WebsiteSale(Base):
             page=0,
             category=category,
             search=search,
-            ppg='10000',
+            ppg="10000",
             **post,
         )
         # Don't proceed if eCommerce is closed.
@@ -207,17 +194,17 @@ class WebsiteSale(Base):
             page=page,
             step=ppg,
             scope=7,
-            url_args=post
+            url_args=post,
         )
 
         # Truncate product according to the pager
-        products = products[pager["offset"]:pager["offset"] + ppg]
+        products = products[pager["offset"] : pager["offset"] + ppg]
 
         # Add element to context
         response.qcontext["products"] = products
-        response.qcontext["restrict_product"] = (
-            request.env.user.website_restrict_product
-        )
+        response.qcontext[
+            "restrict_product"
+        ] = request.env.user.website_restrict_product
         response.qcontext["allowed_products"] = allowed_products
         response.qcontext["product_count"] = product_count
         response.qcontext["pager"] = pager
