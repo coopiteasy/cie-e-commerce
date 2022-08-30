@@ -7,7 +7,7 @@
     "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "category": "Website",
-    "author": "Coop IT Easy SC <https://coopiteasy.be>",
+    "author": "Coop IT Easy SC",
     "website": "https://coopiteasy.be",
     "depends": [
         "website",
