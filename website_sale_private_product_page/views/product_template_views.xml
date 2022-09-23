@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+SPDX-FileCopyrightText: 2022 Coop IT Easy SC
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">
+            website_sale_private_product_page.product_template_form_view
+        </field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="website_sale.product_template_form_view" />
+        <!--
+            Low priority (= high number) to apply this LAST, which tries to make
+            sure that this group is displayed near the top.
+        -->
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='shop']" position="after">
+                <group name="private_token" string="Private Token">
+                    <label for="private_url_token" />
+                    <div class="o_row">
+                        <field name="private_url_token" />
+                        <!--
+                            The 'invisible' domains test for truthiness of
+                            'private_url_token'. Null strings are loaded as False by
+                            Odoo.
+                        -->
+                        <button
+                            name="action_generate_private_url_token"
+                            type="object"
+                            string="Generate"
+                            attrs="{'invisible': [('private_url_token', '!=', False)]}"
+                        />
+                    </div>
+                    <field
+                        name="private_url"
+                        widget="url"
+                        attrs="{'invisible': [('private_url', '=', False)]}"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_only_form_view" model="ir.ui.view">
+        <field name="name">
+            website_sale_private_product_page.product_template_only_form_view
+        </field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <!--
+            Needs to be lower priority than product_template_form_view
+        -->
+        <field name="priority">95</field>
+        <field name="arch" type="xml">
+            <button name="action_generate_private_url_token" position="after">
+                <button
+                    name="action_clear_private_url_token"
+                    type="object"
+                    string="Clear"
+                    attrs="{'invisible': [('private_url_token', '=', False)]}"
+                />
+            </button>
+        </field>
+    </record>
+</odoo>
