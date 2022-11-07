@@ -15,7 +15,11 @@ Modules aiming to support e-commerce specific needs. This includes all the new w
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[website_sale_add_to_cart_popup](website_sale_add_to_cart_popup/) | 14.0.1.0.0 |  | Always show the add to cart popup in the e-commerce.
 
 [//]: # (end addons)
 
