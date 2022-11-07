@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v2.0.0
+_commit: v2.1.2
 _src_path: gh:coopiteasy/oca-addons-repo-template
 ci: GitHub
 dependency_installation_mode: OCA
@@ -11,8 +11,8 @@ github_enable_stale_action: true
 github_enforce_dev_status_compatibility: true
 include_wkhtmltopdf: false
 odoo_version: 14.0
-org_name: Odoo Community Association (OCA)
-org_slug: OCA
+org_name: Coop IT Easy SC
+org_slug: coopiteasy
 rebel_module_groups: []
 repo_description: Modules aiming to support e-commerce specific needs. This includes
     all the new website_sale related modules included in version 12.0.

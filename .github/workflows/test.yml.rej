@@ -1,0 +1,11 @@
+diff a/.github/workflows/test.yml b/.github/workflows/test.yml	(rejected hunks)
+@@ -4,2 +4,4 @@ on:
+   pull_request:
++    branches:
++      - "14.0*"
+   push:
+@@ -6,3 +8,3 @@ on:
+     branches:
+-      - "14.0"
++      - "14.0*"
+ 
