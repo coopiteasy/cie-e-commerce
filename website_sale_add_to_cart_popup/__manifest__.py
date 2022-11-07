@@ -6,8 +6,8 @@
     "summary": "Always show the add to cart popup in the e-commerce.",
     "version": "14.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Coop IT Easy SCRLfs",
-    "website": "https://coopiteasy.be",
+    "author": "Coop IT Easy SC",
+    "website": "https://github.com/OCA/cie-e-commerce",
     "depends": [
         "sale_product_configurator",
         "website_sale",  # Recommends
