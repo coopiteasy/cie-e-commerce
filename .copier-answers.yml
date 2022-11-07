@@ -4,12 +4,21 @@ _src_path: gh:coopiteasy/oca-addons-repo-template
 ci: GitHub
 dependency_installation_mode: OCA
 generate_requirements_txt: true
+github_check_license: true
+github_enable_codecov: true
+github_enable_makepot: true
+github_enable_stale_action: true
+github_enforce_dev_status_compatibility: true
 include_wkhtmltopdf: false
 odoo_version: 14.0
+org_name: Odoo Community Association (OCA)
+org_slug: OCA
 rebel_module_groups: []
 repo_description: Modules aiming to support e-commerce specific needs. This includes
-  all the new website_sale related modules included in version 12.0.
+    all the new website_sale related modules included in version 12.0.
 repo_name: E-commerce modules
 repo_slug: cie-e-commerce
+repo_website: https://github.com/OCA/cie-e-commerce
 travis_apt_packages: []
 travis_apt_sources: []
+
