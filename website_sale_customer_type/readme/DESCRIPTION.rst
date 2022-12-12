@@ -1,5 +1,5 @@
 
-This module adds the ability to define different Customer
+This module adds the ability to define several Customer
 Type and assign it to partner.
 
 A Customer Type brings functionality to :
@@ -8,11 +8,6 @@ A Customer Type brings functionality to :
   of allowed products.
 - Restrict acquirers that a customer can use on the e-commerce to a list
   of allowed acquirers.
-- Force the customer to login before accessing to the e-commerce.
-- Redirect the customer to a specific location after the selection of
-  its type (see Customer Type Selector Popover).
 
-All of these features can be activated or not.
-
-It also implement a Customer Type Selector that popups on the e-commerce
-page at the first visit of a new customer (if configured).
+You can chose to filter only products, only acquirers or both for each
+Customer Type.
