@@ -20,7 +20,7 @@ Website Sale Customer Type
 |badge1| |badge2| |badge3| 
 
 
-This module adds the ability to define different Customer
+This module adds the ability to define several Customer
 Type and assign it to partner.
 
 A Customer Type brings functionality to :
@@ -29,14 +29,9 @@ A Customer Type brings functionality to :
   of allowed products.
 - Restrict acquirers that a customer can use on the e-commerce to a list
   of allowed acquirers.
-- Force the customer to login before accessing to the e-commerce.
-- Redirect the customer to a specific location after the selection of
-  its type (see Customer Type Selector Popover).
 
-All of these features can be activated or not.
-
-It also implement a Customer Type Selector that popups on the e-commerce
-page at the first visit of a new customer (if configured).
+You can chose to filter only products, only acquirers or both for each
+Customer Type.
 
 **Table of contents**
 
@@ -45,6 +40,13 @@ page at the first visit of a new customer (if configured).
 
 Configuration
 =============
+
+Customer Type
+~~~~~~~~~~~~~
+
+Customer Type can be configured under *Contacts > Configuration >
+Customer Type*.
+
 
 Product Restriction
 ~~~~~~~~~~~~~~~~~~~
@@ -65,23 +67,6 @@ To assign product to a Customer Type, it can also be done by adding the
 Customer Type directly on the Product form under the *Website
 Restriction* topic.
 
-!Waring! The product are filtered on the e-commerce **only** if the
-customer is logged in !
-
-
-Customer Type Selector
-~~~~~~~~~~~~~~~~~~~~~~
-
-By default, this module don't show a Customer Selector on the
-e-commerce. The goal of the Customer Selector is to let the user choose
-his type of customer a be guided to the right procedure to connect.
-
-Customer Type can be configured under *Contacts > Configuration >
-Customer Type*.
-
-To enable the Customer Selector on the e-commerce, it must exists at
-least one Customer Type with the *Show On Website* property set to True.
-
 
 Acquirer Restriction
 ~~~~~~~~~~~~~~~~~~~~
@@ -96,17 +81,33 @@ activated/published acquirers.
 To assign acquirer to a Customer Type, it can also be done by adding the
 Customer Type directly on the Payment Acquirer form under the *Configuration* tab.
 
+
+Customer Type for non-connected user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, user that are not logged in on the e-commerce will have no
+Customer Type. So no restriction will be applied.
+
+To set a default Customer Type that applies on user that are not
+connected on the e-commerce, do the following:
+
+- Go to Configuration > Users
+- Remove de default filter and select the filter "Inactive Users".
+- Search for "Public" and select the "Public User".
+- Click on the partner linked to this user.
+- On the partner form set a Customer Type and save.
+
+The Customer Type set on the "Public User" will be used for users that
+are not connected to the e-commerce.
+
 Usage
 =====
 
-Configure as show in the configure section. To use it assign a Customer
-Type to your partners.
-
-If you have published Customer Type, you will see Customer Type Selector
-on the e-commerce page.
+Configure Customer Type as shown in the Configure section. Then assign
+Customer Type to your partners.
 
 If you have configured products on the customer type, you will see only
-these when logged in with a proper account.
+these when logged in with a proper account. Idem for payment acquirer.
 
 Bug Tracker
 ===========

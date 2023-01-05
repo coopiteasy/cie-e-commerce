@@ -1,3 +1,10 @@
+Customer Type
+~~~~~~~~~~~~~
+
+Customer Type can be configured under *Contacts > Configuration >
+Customer Type*.
+
+
 Product Restriction
 ~~~~~~~~~~~~~~~~~~~
 
@@ -17,23 +24,6 @@ To assign product to a Customer Type, it can also be done by adding the
 Customer Type directly on the Product form under the *Website
 Restriction* topic.
 
-!Waring! The product are filtered on the e-commerce **only** if the
-customer is logged in !
-
-
-Customer Type Selector
-~~~~~~~~~~~~~~~~~~~~~~
-
-By default, this module don't show a Customer Selector on the
-e-commerce. The goal of the Customer Selector is to let the user choose
-his type of customer a be guided to the right procedure to connect.
-
-Customer Type can be configured under *Contacts > Configuration >
-Customer Type*.
-
-To enable the Customer Selector on the e-commerce, it must exists at
-least one Customer Type with the *Show On Website* property set to True.
-
 
 Acquirer Restriction
 ~~~~~~~~~~~~~~~~~~~~
@@ -47,3 +37,22 @@ activated/published acquirers.
 
 To assign acquirer to a Customer Type, it can also be done by adding the
 Customer Type directly on the Payment Acquirer form under the *Configuration* tab.
+
+
+Customer Type for non-connected user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, user that are not logged in on the e-commerce will have no
+Customer Type. So no restriction will be applied.
+
+To set a default Customer Type that applies on user that are not
+connected on the e-commerce, do the following:
+
+- Go to Configuration > Users
+- Remove de default filter and select the filter "Inactive Users".
+- Search for "Public" and select the "Public User".
+- Click on the partner linked to this user.
+- On the partner form set a Customer Type and save.
+
+The Customer Type set on the "Public User" will be used for users that
+are not connected to the e-commerce.
