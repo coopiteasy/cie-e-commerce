@@ -11,8 +11,9 @@ the new website_sale related modules included in version 11.0.
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[website_sale_customer_type](website_sale_customer_type/) | 11.0.2.0.0 |  | Website Sale Customer Type
 
 [//]: # (end addons)
 <!-- prettier-ignore-end -->
