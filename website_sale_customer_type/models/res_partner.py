@@ -2,7 +2,7 @@
 #   Rémy Taymans <remy@coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, exceptions, fields, models
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -12,13 +12,11 @@ class ResPartner(models.Model):
     customer_type_id = fields.Many2one(
         comodel_name="res.partner.customer.type",
         string="Customer Type",
-        help=(
-            "Customer type used to distinguish different type of customer"
-        )
+        help=("Customer type used to distinguish different type of customer"),
     )
     website_restrict_product = fields.Boolean(
         string="Restrict Product on E-commerce",
-        compute="_compute_website_restrict_product"
+        compute="_compute_website_restrict_product",
     )
     website_product_ids = fields.Many2many(
         comodel_name="product.product",
@@ -27,7 +25,7 @@ class ResPartner(models.Model):
     )
     website_restrict_acquirer = fields.Boolean(
         string="Restrict Acquirer on E-commerce",
-        compute="_compute_website_restrict_acquirer"
+        compute="_compute_website_restrict_acquirer",
     )
     website_acquirer_ids = fields.Many2many(
         comodel_name="payment.acquirer",
@@ -41,10 +39,7 @@ class ResPartner(models.Model):
         check the customer_type of the commercial_partner_id.
         """
         self.ensure_one()
-        return (
-            self.customer_type_id
-            or self.commercial_partner_id.customer_type_id
-        )
+        return self.customer_type_id or self.commercial_partner_id.customer_type_id
 
     @api.depends("customer_type_id")
     def _compute_website_restrict_product(self):
