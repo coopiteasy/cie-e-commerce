@@ -17,7 +17,11 @@ Modules aiming to support e-commerce-specific needs.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[website_sale_customer_type](website_sale_customer_type/) | 11.0.2.0.0 |  | Show different product and payement acquirer depending on the customer type assigned to a customer on the e-commerce.
 
 [//]: # (end addons)
 
