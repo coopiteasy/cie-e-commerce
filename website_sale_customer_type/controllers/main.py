@@ -3,13 +3,15 @@
 
 from odoo import _, http
 from odoo.http import request
+
 from odoo.addons.website_sale.controllers.main import (
-    PPG, TableCompute, WebsiteSale as Base
+    PPG,
+    TableCompute,
+    WebsiteSale as Base,
 )
 
 
 class WebsiteSale(Base):
-
     def _is_product_allowed(self, product_tmpl, allowed_products):
         """
         Return True if the product_tmpl is allowed based on the
@@ -43,11 +45,7 @@ class WebsiteSale(Base):
 
         # Call the parent function and get all of the products
         response = super().shop(
-            page=0,
-            category=category,
-            search=search,
-            ppg='10000',
-            **post
+            page=0, category=category, search=search, ppg="10000", **post
         )
         products = response.qcontext["products"]
 
@@ -72,17 +70,17 @@ class WebsiteSale(Base):
             page=page,
             step=ppg,
             scope=7,
-            url_args=post
+            url_args=post,
         )
 
         # Truncate product according to the pager
-        products = products[pager["offset"]:pager["offset"] + ppg]
+        products = products[pager["offset"] : pager["offset"] + ppg]
 
         # Add element to context
         response.qcontext["products"] = products
-        response.qcontext["restrict_product"] = (
-            request.env.user.website_restrict_product
-        )
+        response.qcontext[
+            "restrict_product"
+        ] = request.env.user.website_restrict_product
         response.qcontext["allowed_products"] = allowed_products
         response.qcontext["product_count"] = product_count
         response.qcontext["pager"] = pager
@@ -108,16 +106,14 @@ class WebsiteSale(Base):
         else:
             alt_product_ids = product.alternative_product_ids
         response.qcontext["allowed_products"] = allowed_products
-        response.qcontext["restrict_product"] = (
-            request.env.user.website_restrict_product
-        )
+        response.qcontext[
+            "restrict_product"
+        ] = request.env.user.website_restrict_product
         response.qcontext["alt_product_ids"] = alt_product_ids
         return response
 
     def _get_shop_payment_values(self, order, **kwargs):
-        result = super(WebsiteSale, self)._get_shop_payment_values(
-            order, **kwargs
-        )
+        result = super(WebsiteSale, self)._get_shop_payment_values(order, **kwargs)
         shipping_partner_id = False
         if order:
             shipping_partner_id = (
@@ -143,8 +139,8 @@ class WebsiteSale(Base):
                 acq.with_context(
                     submit_class="btn btn-primary", submit_txt=_("Pay Now")
                 )
-                    .sudo()
-                    .render(
+                .sudo()
+                .render(
                     "/",
                     order.amount_total,
                     order.pricelist_id.currency_id.id,
