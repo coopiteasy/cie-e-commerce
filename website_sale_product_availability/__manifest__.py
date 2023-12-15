@@ -7,7 +7,7 @@
         Display the quantity of products available on the product overview.""",
     "version": "12.0.1.0.0",
     "category": "Website",
-    "website": "https://github.com/OCA/e-commerce",
+    "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
     "maintainers": ["carmenbianca"],
     "license": "AGPL-3",

@@ -25,14 +25,27 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
                 website_sale_stock.product_availability, so it's probably
                 fine.
             -->
-            <t t-esc="product.sudo().virtual_available" /> <t t-esc="product.uom_name" /> available
+            <t t-esc="product.sudo().virtual_available" /> <t
+                t-esc="product.uom_name"
+            /> available
         </span>
         <span t-if="product.inventory_availability == 'threshold'">
-            <t t-if="product.sudo().virtual_available &lt;= product.available_threshold">
-                    <i class="fa fa-exclamation-triangle" title="Warning" role="img" aria-label="Warning"/>
-                    <t t-esc="product.sudo().virtual_available" /> <t t-esc="product.uom_name" /> available
+            <t
+                t-if="product.sudo().virtual_available &lt;= product.available_threshold"
+            >
+                    <i
+                    class="fa fa-exclamation-triangle"
+                    title="Warning"
+                    role="img"
+                    aria-label="Warning"
+                />
+                    <t t-esc="product.sudo().virtual_available" /> <t
+                    t-esc="product.uom_name"
+                /> available
             </t>
-            <t t-if="product.sudo().virtual_available &gt; product.available_threshold">In stock</t>
+            <t
+                t-if="product.sudo().virtual_available &gt; product.available_threshold"
+            >In stock</t>
         </span>
     </template>
 </odoo>
