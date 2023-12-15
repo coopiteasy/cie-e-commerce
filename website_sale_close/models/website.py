@@ -16,6 +16,6 @@ class Website(models.Model):
     )
     text_closed_ecommerce = fields.Html(
         string="Text closed e-commerce",
-        default="E-commerce is momently closed.",
+        default="E-commerce is currently closed.",
         translate=True,
     )
