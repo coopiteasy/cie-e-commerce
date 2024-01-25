@@ -5,7 +5,7 @@
     "name": "Website Sale Product Availability",
     "summary": """
         Display the quantity of products available on the product overview.""",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.1.0",
     "category": "Website",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
