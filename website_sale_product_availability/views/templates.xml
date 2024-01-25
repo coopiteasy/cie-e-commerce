@@ -16,6 +16,7 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
     </template>
 
     <template id="product_availability">
+        <t t-if="not quantity_format" t-set="quantity_format" t-value="'%.2f'" />
         <span t-if="product.inventory_availability == 'always'">
             <!--
                 FIXME: This doesn't seem like good i18n practice to me. What
@@ -25,7 +26,7 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
                 website_sale_stock.product_availability, so it's probably
                 fine.
             -->
-            <t t-esc="product.sudo().virtual_available" /> <t
+            <t t-esc="quantity_format % product.sudo().virtual_available" /> <t
                 t-esc="product.uom_name"
             /> available
         </span>
@@ -39,7 +40,7 @@ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
                     role="img"
                     aria-label="Warning"
                 />
-                    <t t-esc="product.sudo().virtual_available" /> <t
+                    <t t-esc="quantity_format % product.sudo().virtual_available" /> <t
                     t-esc="product.uom_name"
                 /> available
             </t>
