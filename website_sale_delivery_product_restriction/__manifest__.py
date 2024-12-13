@@ -3,18 +3,17 @@
 
 {
     "name": "Website Sale Delivery Product Restriction",
-    "summary": """
-        Allow some product to be shipped only by some delivery carrier and also
-        on eCommerce.""",
-    "version": "12.0.1.0.0",
+    "summary": (
+        "Allow some product to be shipped only by some delivery carrier and "
+        "also on eCommerce"
+    ),
+    "version": "13.0.1.0.0",
     "category": "Website",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
     "license": "AGPL-3",
-    "application": False,
-    "depends": ["delivery_product_restriction"],
-    "excludes": [],
-    "data": [],
-    "demo": [],
-    "qweb": [],
+    "depends": [
+        "delivery_product_restriction",
+        "website_sale_delivery",
+    ],
 }
