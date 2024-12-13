@@ -7,7 +7,7 @@
         "Allow some product to be shipped only by some delivery carrier and "
         "also on eCommerce"
     ),
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "category": "Website",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
