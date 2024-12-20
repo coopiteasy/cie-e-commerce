@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="user_navbar" inherit_id="website.user_navbar">
+    <template id="website_publisher" inherit_id="website.website_publisher">
         <xpath
             expr="//li[@t-att-data-controller='publish_controller']"
             position="attributes"
@@ -11,6 +11,7 @@
             -->
             <attribute name="t-attf-class">
                 js_publish_management
+                {{extra_classes}}
                 {{main_object.website_published and "css_published" or "css_unpublished"}}
                 {{"o_disabled" if main_object.auto_managed_publishing else ""}}
             </attribute>
