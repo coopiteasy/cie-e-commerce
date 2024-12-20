@@ -15,13 +15,12 @@ class WebsitePublishedMixin(models.AbstractModel):
 
     @api.model
     def create(self, values):
-        record = super(WebsitePublishedMixin, self).create(values)
+        record = super().create(values)
         record.website_auto_publish()
         return record
 
-    @api.multi
     def write(self, values):
-        res = super(WebsitePublishedMixin, self).write(values)
+        res = super().write(values)
         self.website_auto_publish()
         return res
 
@@ -31,7 +30,6 @@ class WebsitePublishedMixin(models.AbstractModel):
         self.ensure_one()
         return self.website_published
 
-    @api.multi
     def website_auto_publish(self):
         for record in self:
             if (
@@ -40,12 +38,8 @@ class WebsitePublishedMixin(models.AbstractModel):
             ):
                 record.website_published = not record.website_published
 
-    @api.multi
     def website_publish_button(self):
         self.ensure_one()
-        if not self.auto_managed_publishing or (
-            self.website_url != "#"
-            and self.env.user.has_group("website.group_website_publisher")
-        ):
-            return super(WebsitePublishedMixin, self).website_publish_button()
+        if not self.auto_managed_publishing:
+            return super().website_publish_button()
         raise UserError(_("Automatic (un)publishing is enabled."))

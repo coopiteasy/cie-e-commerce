@@ -3,8 +3,8 @@
 
 {
     "name": "Website Auto Publish",
-    "summary": """Base module for automatic (un)publishing""",
-    "version": "12.0.1.0.0",
+    "summary": "Base module for automatic (un)publishing",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "category": "Website",
     "author": "Coop IT Easy SC",
@@ -14,6 +14,6 @@
     ],
     "data": [
         "templates/website_navbar_templates.xml",
+        "templates/website_templates.xml",
     ],
-    "installable": True,
 }
