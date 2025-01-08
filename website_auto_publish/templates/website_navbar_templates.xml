@@ -2,7 +2,7 @@
 <odoo>
     <template id="website_publisher" inherit_id="website.website_publisher">
         <xpath
-            expr="//li[@t-att-data-controller='publish_controller']"
+            expr="//div[@t-att-data-controller='publish_controller']"
             position="attributes"
         >
             <!--
@@ -17,7 +17,7 @@
             </attribute>
         </xpath>
         <xpath
-            expr="//li[@t-att-data-controller='publish_controller']/label"
+            expr="//div[@t-att-data-controller='publish_controller']/label"
             position="attributes"
         >
             <!--
@@ -27,6 +27,7 @@
             <attribute name="t-attf-class">
                 o_switch o_switch_danger
                 {{"" if main_object.auto_managed_publishing else "js_publish_btn"}}
+                m-0
             </attribute>
         </xpath>
     </template>
