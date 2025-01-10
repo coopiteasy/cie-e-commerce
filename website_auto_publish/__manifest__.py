@@ -4,7 +4,7 @@
 {
     "name": "Website Auto Publish",
     "summary": "Base module for automatic (un)publishing",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "category": "Website",
     "author": "Coop IT Easy SC",
@@ -12,12 +12,10 @@
     "depends": [
         "website",
     ],
-    "data": [
-        "templates/website_navbar_templates.xml",
-    ],
     "assets": {
         "website.assets_editor": [
             "website_auto_publish/static/src/scss/website.scss",
+            "website_auto_publish/static/src/systray_items/*.js",
         ],
     },
 }

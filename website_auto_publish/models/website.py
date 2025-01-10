@@ -13,11 +13,11 @@ class WebsitePublishedMixin(models.AbstractModel):
         help="Enable the automatic (un)publishing",
     )
 
-    @api.model
-    def create(self, values):
-        record = super().create(values)
-        record.website_auto_publish()
-        return record
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        records.website_auto_publish()
+        return records
 
     def write(self, values):
         res = super().write(values)
