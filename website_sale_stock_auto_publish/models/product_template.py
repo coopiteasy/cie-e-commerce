@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
 
     def auto_publishing_value(self):
         self.ensure_one()
-        value = super(ProductTemplate, self).auto_publishing_value()
+        value = super().auto_publishing_value()
         if self.inventory_availability == "always":
             value = self.virtual_available > 0
         elif self.inventory_availability == "threshold":
