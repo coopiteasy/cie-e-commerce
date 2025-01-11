@@ -11,14 +11,9 @@
             ref="website_sale_stock.product_template_form_view_inherit_website_sale_stock"
         />
         <field name="arch" type="xml">
-            <field name="inventory_availability" position="before">
+            <xpath expr="//label[@for='allow_out_of_stock_order']" position="before">
                 <field name="auto_managed_publishing" />
-            </field>
-            <field name="inventory_availability" position="attributes">
-                <attribute
-                    name="attrs"
-                >{'required': [('auto_managed_publishing','=', True)]}</attribute>
-            </field>
+            </xpath>
         </field>
     </record>
 </odoo>

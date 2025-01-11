@@ -7,7 +7,7 @@
         Allows the automatic (un)publishing of products according to the stock
         level
     """,
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "license": "AGPL-3",
     "category": "Website",
     "author": "Coop IT Easy SC",
