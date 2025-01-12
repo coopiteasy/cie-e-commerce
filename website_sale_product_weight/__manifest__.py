@@ -5,7 +5,7 @@
 {
     "name": "Website Sale Product Weight",
     "summary": "Display the weight of a product on the e-commerce product page",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Website",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
@@ -14,7 +14,11 @@
         "website_sale",
     ],
     "data": [
-        "views/assets.xml",
         "views/templates.xml",
     ],
+    "assets": {
+        "web.assets_frontend": [
+            "website_sale_product_weight/static/src/**/*",
+        ],
+    },
 }
