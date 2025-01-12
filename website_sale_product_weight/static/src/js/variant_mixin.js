@@ -2,15 +2,15 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-odoo.define("website_sale_product_weight.product_configurator_mixin", function(
+odoo.define("website_sale_product_weight.variant_mixin", function(
     require
 ) {
     "use strict";
 
-    var ProductConfiguratorMixin = require("sale.ProductConfiguratorMixin");
-    var animation = require("website.content.snippets.animation");
+    var VariantMixin = require("sale.VariantMixin");
+    var publicWidget = require("web.public.widget");
 
-    ProductConfiguratorMixin._onChangeCombinationWeight = function(
+    VariantMixin._onChangeCombinationWeight = function(
         _ev,
         $parent,
         combination
@@ -24,12 +24,12 @@ odoo.define("website_sale_product_weight.product_configurator_mixin", function(
         $weight_uom_name.html(combination.weight_uom_name);
     };
 
-    animation.registry.WebsiteSale.include({
+    publicWidget.registry.WebsiteSale.include({
         _onChangeCombination: function() {
             this._super.apply(this, arguments);
-            ProductConfiguratorMixin._onChangeCombinationWeight.apply(this, arguments);
+            VariantMixin._onChangeCombinationWeight.apply(this, arguments);
         },
     });
 
-    return ProductConfiguratorMixin;
+    return VariantMixin;
 });

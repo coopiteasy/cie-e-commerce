@@ -34,9 +34,13 @@ class ProductTemplate(models.Model):
             if product:
                 product_found = True
                 info.update(weight=product.weight)
-                info.update(weight_uom_name=product.weight_uom_name)
+                # sudo is necessary because the portal user doesn't have the
+                # right to access uom.uom records.
+                info.update(weight_uom_name=product.sudo().weight_uom_name)
         # Sane defaults from the product.template.
         if not product_found:
             info.update(weight=self.weight)
-            info.update(weight_uom_name=self.weight_uom_name)
+            # sudo is necessary because the portal user doesn't have the
+            # right to access uom.uom records.
+            info.update(weight_uom_name=self.sudo().weight_uom_name)
         return info
