@@ -7,17 +7,12 @@
     "summary": """
         Sort the selection of product variants in e-commerce such that available
         ones are always displayed first.""",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "category": "Website",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
     "license": "AGPL-3",
-    "application": False,
     "depends": [
-        "website_sale",
+        "website_sale_stock",
     ],
-    "excludes": [],
-    "data": [],
-    "demo": [],
-    "qweb": [],
 }

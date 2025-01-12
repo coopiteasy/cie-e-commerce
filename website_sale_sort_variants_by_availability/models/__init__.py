@@ -2,5 +2,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-from . import product_template_attribute_line
+from . import product_template_attribute_value
 from . import product_template

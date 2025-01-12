@@ -2,17 +2,19 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-from odoo import api, models
+from odoo import models
 
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    @api.multi
     def _get_possible_variants_sorted(self, parent_combination=None):
-        """This is used by `website_sale.product_variants` (list view of variants)."""
+        # this is used by the website_sale.product_variants, which is not used
+        # by default, but can be enabled through website > customize > list
+        # view of variants. this only affects product templates that use only
+        # one variant attribute; the other ones still use the default
+        # template.
         self.ensure_one()
-
         return (
             super()
             ._get_possible_variants_sorted()
