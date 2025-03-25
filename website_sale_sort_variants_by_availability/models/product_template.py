@@ -18,6 +18,9 @@ class ProductTemplate(models.Model):
         self.ensure_one()
         return (
             super()
-            ._get_possible_variants_sorted()
+            ._get_possible_variants_sorted(parent_combination)
+            # sudo is needed because public users don't have access to
+            # stock.warehouse records.
+            .sudo()
             .sorted(lambda product: product.qty_available > 0, reverse=True)
         )
