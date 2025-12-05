@@ -17,7 +17,11 @@ Modules aiming to support e-commerce-specific needs. This includes all the new w
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[website_sale_product_weight](website_sale_product_weight/) | 16.0.1.0.0 |  | Display the weight of a product on the e-commerce product page
 
 [//]: # (end addons)
 
