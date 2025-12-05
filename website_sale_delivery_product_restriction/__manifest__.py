@@ -1,0 +1,19 @@
+# Copyright 2022 Coop IT Easy SC
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+{
+    "name": "Website Sale Delivery Product Restriction",
+    "summary": (
+        "Allow some product to be shipped only by some delivery carrier and "
+        "also on eCommerce"
+    ),
+    "version": "16.0.1.0.0",
+    "category": "Website",
+    "website": "https://coopiteasy.be",
+    "author": "Coop IT Easy SC",
+    "license": "AGPL-3",
+    "depends": [
+        "delivery_product_restriction",
+        "website_sale_delivery",
+    ],
+}
