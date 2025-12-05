@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[website_auto_publish](website_auto_publish/) | 16.0.1.0.0 |  | Base module for automatic (un)publishing
 [website_sale_delivery_product_restriction](website_sale_delivery_product_restriction/) | 16.0.1.0.0 |  | Allow some product to be shipped only by some delivery carrier and also on eCommerce
 [website_sale_product_weight](website_sale_product_weight/) | 16.0.1.0.0 |  | Display the weight of a product on the e-commerce product page
 
