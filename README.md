@@ -26,8 +26,8 @@ addon | version | maintainers | summary
 [website_sale_close](website_sale_close/) | 12.0.1.0.0 |  | Allow to close the website for a moment and reopen it when needed.
 [website_sale_customer_type](website_sale_customer_type/) | 12.0.1.0.0 |  | Let customer choose his type when accessing the e-commerce
 [website_sale_delivery_product_restriction](website_sale_delivery_product_restriction/) | 12.0.1.0.0 |  | Allow some product to be shipped only by some delivery carrier and also on eCommerce.
-[website_sale_private_product_page](website_sale_private_product_page/) | 12.0.1.0.0 | [![carmenbianca](https://github.com/carmenbianca.png?size=30px)](https://github.com/carmenbianca) | Allow users to access an e-commerce product page via a private URL even when the product is not published.
-[website_sale_product_availability](website_sale_product_availability/) | 12.0.1.1.0 | [![carmenbianca](https://github.com/carmenbianca.png?size=30px)](https://github.com/carmenbianca) | Display the quantity of products available on the product overview.
+[website_sale_private_product_page](website_sale_private_product_page/) | 12.0.1.0.0 | <a href='https://github.com/carmenbianca'><img src='https://github.com/carmenbianca.png' width='32' height='32' style='border-radius:50%;' alt='carmenbianca'/></a> | Allow users to access an e-commerce product page via a private URL even when the product is not published.
+[website_sale_product_availability](website_sale_product_availability/) | 12.0.1.1.0 | <a href='https://github.com/carmenbianca'><img src='https://github.com/carmenbianca.png' width='32' height='32' style='border-radius:50%;' alt='carmenbianca'/></a> | Display the quantity of products available on the product overview.
 [website_sale_product_sort_recent_arrival](website_sale_product_sort_recent_arrival/) | 12.0.1.0.0 |  | Let sort product on e-commerce by most recent arrival date.
 [website_sale_stock_auto_publish](website_sale_stock_auto_publish/) | 12.0.1.0.0 |  | Allows the automatic (un)publishing of products according to the stock level
 
