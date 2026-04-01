@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [website_sale_customer_type](website_sale_customer_type/) | 11.0.2.1.0 |  | Show different product and payement acquirer depending on the customer type assigned to a customer on the e-commerce.
-[website_sale_redirect_to_shop](website_sale_redirect_to_shop/) | 11.0.1.0.0 | [![carmenbianca](https://github.com/carmenbianca.png?size=30px)](https://github.com/carmenbianca) | When adding a product, redirect back to the shop instead of to the shopping cart.
+[website_sale_redirect_to_shop](website_sale_redirect_to_shop/) | 11.0.1.0.0 | <a href='https://github.com/carmenbianca'><img src='https://github.com/carmenbianca.png' width='32' height='32' style='border-radius:50%;' alt='carmenbianca'/></a> | When adding a product, redirect back to the shop instead of to the shopping cart.
 
 [//]: # (end addons)
 
